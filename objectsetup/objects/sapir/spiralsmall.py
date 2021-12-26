@@ -1,6 +1,6 @@
 
-spiral_small = {
-        "numberOfPixels": 721,
+spiral_small_val = {
+        "numberOfPixels": 722,
         "segments": [{
             "name": "spiral1",
             "indices": list(range(0, 300))

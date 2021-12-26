@@ -1,5 +1,5 @@
-object_val = {
-        "numberOfPixels": 1168,
+spiral_big_val = {
+        "numberOfPixels": 1307,
         "segments": [{
             "name": "spiral1",
             "indices": list(range(0, 92))
