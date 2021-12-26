@@ -13,7 +13,7 @@ print(args.trigger)
 ###################################
 #               BAZ               #
 ###################################
-if (args.trigger == "baz"):
+if args.trigger == "baz":
     trigger_name = "baz"
     baz.register_sequence()
     baz.play_animation()
@@ -21,10 +21,10 @@ if (args.trigger == "baz"):
 ###################################
 #               ETTA              #
 ###################################
-elif (args.trigger == "etta"):
+elif args.trigger == "etta":
     trigger_name = "etta"
     etta.register_sequence()
     songs.play("etta")
 
-elif (args.trigger == "stop"):
+elif args.trigger == "stop":
     songs.stop()
