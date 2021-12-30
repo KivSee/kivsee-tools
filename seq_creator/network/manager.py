@@ -31,6 +31,7 @@ def store_sequence_thing(trigger_name, seq, thing_name):
 
 def store_sequence_all(trigger_name, seq,  thing_names):
     for thing_name in thing_names:
+        print(f"Storing for thing {thing_name}")
         store_sequence_thing(trigger_name, seq, thing_name)
 
 

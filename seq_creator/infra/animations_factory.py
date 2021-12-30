@@ -3,23 +3,17 @@ from rendering.effects import (rainbow, brightness, hue_shift, const_color)
 from rendering.function import functions_store
 #  TODO protect it to be package-private
 objectsProvider = ObjectsProvider()
-effectsList = []
-
-def get_effects_list():
-    return effectsList
-
-def get_elements():
-    return objectsProvider.elements
 
 class ColoringEffectFactory:
 
-    def __init__(self):
-        pass
+    def __init__(self, segments, effects_list_holder):
+        self.effects_list_holder = effects_list_holder
+        self.segments = segments
 
     def uniform(self, color):
-        print(objectsProvider.elements)
-        effectsList.extend(const_color.all_segments(objectsProvider.elements, color))
-        pass
+        tempList = const_color.all_segments(self.segments, color)
+        self.effects_list_holder.extend(tempList)
+        print(self.effects_list_holder.effects_list)
     #     ConstColorAnimation(color).apply()
     #
     # def gradient(self, hue_start, hue_end):
@@ -28,8 +22,9 @@ class ColoringEffectFactory:
     # def alternate(self, color1, color2, number_of_pixels = 3):
     #     AlternateColoringAnimation(color1, color2, number_of_pixels).apply()
 
-
-coloring_effect = ColoringEffectFactory()
+# # TODO to be deleted
+# effect333 = []
+# coloring_effect = ColoringEffectFactory( "all", effect333 )
 
 
 class MaskingEffectFactory:

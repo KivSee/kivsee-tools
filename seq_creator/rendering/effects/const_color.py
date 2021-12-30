@@ -30,6 +30,6 @@ def for_each(start, end, segments, hue=0.5):
 
 def all_segments(segments, color):
     tf = timing.get_timing()
-    return [
-        const_color_effect(segment, tf.get_start_time_ms(), tf.get_end_time_ms(), color[0], color[1],
-                           color[2]) for idx, segment in enumerate(segments)]
+    result = [const_color_effect(segment, tf.get_start_time_ms(), tf.get_end_time_ms(), color[0], color[1],
+                                 color[2]) for idx, segment in enumerate(segments)]
+    return result
