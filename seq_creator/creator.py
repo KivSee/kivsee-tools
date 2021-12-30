@@ -1,6 +1,7 @@
 # import requests
 # from config import *
-from users.sapir.songs import etta, baz, under, under_basic
+from users.sapir.songs import etta, baz, under2, under_basic
+from users.sapir.songs.under import Under
 from network import manager
 import argparse
 
@@ -29,8 +30,8 @@ elif args.trigger == "under_basic":
     manager.play_song("under")
 
 elif args.trigger == "under":
-    under.build_and_store_sequence()
-    manager.play_song(args.trigger)
+    under = Under()
+    under.play()
 
 elif args.trigger == "stop":
     manager.stop()
