@@ -1,4 +1,4 @@
-from rendering.function import functions_store
+from seqcreator.rendering.function import functions_store
 
 
 def hue_shift_effect(segment_name, start_time, end_time, function):

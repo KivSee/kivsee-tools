@@ -25,6 +25,8 @@ class TimeFrame:
 
     @property
     def start_beat_index(self):
+        print(self._start_beat_index)
+        print()
         return self._start_beat_index
 
     @property

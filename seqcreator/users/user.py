@@ -1,5 +1,6 @@
 from abc import abstractmethod
-from network import manager
+from seqcreator.network import manager
+
 
 class User:
 

@@ -1,5 +1,4 @@
 
-
 def linear_function(start, end):
     return {
         "linear": {
@@ -17,11 +16,11 @@ def const_function(val):
     }
 
 
-def sin_function(min, max, phase, repeats):
+def sin_function(sin_min, sin_max, phase, repeats):
     return {
         "sin": {
-            "min": min,
-            "max": max,
+            "min": sin_min,
+            "max": sin_max,
             "phase": phase,
             "repeats": repeats,
         }

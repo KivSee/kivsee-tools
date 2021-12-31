@@ -1,6 +1,6 @@
-from .objects_provider import ObjectsProvider
-from rendering.effects import (rainbow, brightness, hue_shift, const_color)
-from rendering.function import functions_store
+from seqcreator.infra.objects_provider import ObjectsProvider
+from seqcreator.rendering.effects import (rainbow, brightness, hue_shift, const_color)
+from seqcreator.rendering.function import functions_store
 #  TODO protect it to be package-private
 objectsProvider = ObjectsProvider()
 
@@ -8,12 +8,13 @@ class ColoringEffectFactory:
 
     def __init__(self, segments, effects_list_holder):
         self.effects_list_holder = effects_list_holder
-        self.segments = segments
+        self.all_segments = segments
 
-    def uniform(self, color):
-        tempList = const_color.all_segments(self.segments, color)
-        self.effects_list_holder.extend(tempList)
-        print(self.effects_list_holder.effects_list)
+    def uniform(self, color, group_of_segments):
+        temp_list = const_color.all_segments(group_of_segments, color)
+        self.effects_list_holder.extend(temp_list)
+        print("uniform done")
+        # print(self.effects_list_holder.effects_list)
     #     ConstColorAnimation(color).apply()
     #
     # def gradient(self, hue_start, hue_end):
@@ -29,8 +30,14 @@ class ColoringEffectFactory:
 
 class MaskingEffectFactory:
 
-    def brightness(self, factor):
-         pass
+    def __init__(self, segments, effects_list_holder):
+        self.effects_list_holder = effects_list_holder
+        self.all_segments = segments
+
+    def brightness(self, function, groups_of_segments):
+        temp_list = brightness.all_segments(groups_of_segments, function)
+        self.effects_list_holder.extend(temp_list)
+        print("Done brightness")
     #     BrightnessAnimation(ConstFloatFunc(factor)).apply()
     #
     # def snake(self, tail=1.0, switch_direction=False):
@@ -160,4 +167,4 @@ class MaskingEffectFactory:
     # def hue_shift_cycle_diff(self, start=0.0, dx=0.25):
     #     HueShiftCycleAnimation(StepDiffDiscreteFloatFunc(start, dx)).apply()
 
-masking_effect = MaskingEffectFactory()
+# masking_effect = MaskingEffectFactory()

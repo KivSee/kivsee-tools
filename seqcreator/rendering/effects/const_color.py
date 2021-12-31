@@ -1,4 +1,4 @@
-from infra import timing
+from seqcreator.infra import timing
 
 
 def const_color_effect(segment_name, start_time, end_time, hue, sat=1.0, val=0.3):

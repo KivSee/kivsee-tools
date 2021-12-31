@@ -1,8 +1,8 @@
 from overrides import overrides
-from users.user import User
-from network import manager
-from users.sapir.songs.deprecated import etta, baz, under_basic
-from users.sapir.songs.under import Under
+from seqcreator.users.user import User
+from seqcreator.network import manager
+from seqcreator.users.sapir.songs.deprecated import etta, baz, under_basic
+from seqcreator.users.sapir.songs.under import Under
 
 
 class Sapir(User):
