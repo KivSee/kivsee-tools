@@ -15,7 +15,7 @@ def brightness_effect(segment_name, start_time, end_time, function):
     }
 
 
-def for_each(start, end, segments):
+def for_time(start, end, segments):
     return [brightness_effect(segment["name"], start, end,
                               functions_store.comb2_function(functions_store.sin_function(-1, 1, 0, 1.9), 0.7,
                                                              functions_store.sin_function(-1, 1, 0, 3), 0.3))

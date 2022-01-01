@@ -1,4 +1,3 @@
-
 class ObjectsProvider:
         def __init__(self):
             self._elements = ["all"]

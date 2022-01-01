@@ -1,8 +1,10 @@
 from seqcreator.infra.objects_provider import ObjectsProvider
 from seqcreator.rendering.effects import (rainbow, brightness, hue_shift, const_color)
 from seqcreator.rendering.function import functions_store
+
 #  TODO protect it to be package-private
 objectsProvider = ObjectsProvider()
+
 
 class ColoringEffectFactory:
 
@@ -13,7 +15,7 @@ class ColoringEffectFactory:
     def uniform(self, color, group_of_segments):
         temp_list = const_color.all_segments(group_of_segments, color)
         self.effects_list_holder.extend(temp_list)
-        print("uniform done")
+
         # print(self.effects_list_holder.effects_list)
     #     ConstColorAnimation(color).apply()
     #
@@ -37,7 +39,7 @@ class MaskingEffectFactory:
     def brightness(self, function, groups_of_segments):
         temp_list = brightness.all_segments(groups_of_segments, function)
         self.effects_list_holder.extend(temp_list)
-        print("Done brightness")
+
     #     BrightnessAnimation(ConstFloatFunc(factor)).apply()
     #
     # def snake(self, tail=1.0, switch_direction=False):

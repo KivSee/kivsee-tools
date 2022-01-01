@@ -22,9 +22,10 @@ def const_color_effect(segment_name, start_time, end_time, hue, sat=1.0, val=0.3
 def for_each(start, end, segments, hue=0.5):
     result = []
     for segment in segments:
+        # print(f'******** segments[name] = {segment["name"]}')
         segment_name = segment["name"]
         result.append(const_color_effect(segment_name, start, end, hue))
-    print(result)
+    # print(result)
     return result
 
 

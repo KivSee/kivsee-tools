@@ -1,7 +1,7 @@
 import argparse
-import logging
-import sys
 from seqcreator import config
+from seqcreator.logging import kivsee_logger
+from seqcreator.logging.kivsee_logger import kivseeLogger as logger
 from seqcreator.user_router import UserRouter
 
 
@@ -17,24 +17,12 @@ def run():
     # ---------------------------------
     #           Logger setup          #
     # ---------------------------------
-    # logging.propagate = False
-    log = logging.getLogger('')
-    log.setLevel(config.log_level)
-    formatter = logging.Formatter(fmt="%(asctime)s.%(msecs)03d | %(name)s | %(levelname)s | %(filename)s:%(funcName)s() | line %(lineno)s | %(message)s",
-                                  datefmt='%d-%m-%Y %H:%M:%S')
-    ch = logging.StreamHandler(sys.stdout)
-    ch.setFormatter(formatter)
-    log.addHandler(ch)
-
-    logging.StreamHandler().setFormatter(formatter)
-    # logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
-    logging.info(f"\n---------\nInput argument:\n\ttrigger: {args.trigger}\n---------\n")
+    kivsee_logger.init()
+    logger.info(f"\n---------\nInput argument:\n\ttrigger: {args.trigger}\n---------\n")
 
     # ---------------------------------
     #        Route user request       #
     # ---------------------------------
     user_router = UserRouter(config.name)
-    user_router.route(args)
+    user_router.route(args.trigger)
 
-
-run()

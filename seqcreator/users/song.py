@@ -2,7 +2,7 @@ from abc import abstractmethod
 from seqcreator.infra.animations_factory import ColoringEffectFactory, MaskingEffectFactory
 from seqcreator.network import manager
 from seqcreator.users.effects_list_holder import EffectsListHolder
-
+from seqcreator.logging.kivsee_logger import kivseeLogger as logger
 
 class Song(object):
 
@@ -31,13 +31,13 @@ class Song(object):
         }
 
     def store_sequence(self):
-        # print(f"storing for each element in {self.user.get_elements()}")
+        logger.info(f"storing for each element in {self.user.get_elements()}")
         seq = self.render()
         manager.store_sequence_all(self.trigger_name, seq, self.thing_names)
 
 
     def play(self):
-        print(f"Song: load {self.trigger_name}")
+        logger.info(f"Song: load {self.trigger_name}")
         self.store_sequence()
-        print(f"Song: playing {self.trigger_name}")
+        logger.info(f"Song: playing {self.trigger_name}")
         manager.play_song(self.trigger_name)

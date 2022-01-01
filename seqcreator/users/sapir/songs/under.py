@@ -4,6 +4,7 @@ from seqcreator.infra import timing
 from seqcreator.rendering.function import functions_store
 from seqcreator.users.song import Song
 
+
 note_to_elem1 = {
     "D": "spiral1",
     "Bb": "spiral2",
@@ -126,7 +127,6 @@ class Under(Song):
         self.play_note(start_beat, "Bb", 7.0)
         self.play_note(start_beat, "D", 7.0)
 
-        print("render effect done")
 
     def play_note(self, start_beat, note, t):
         start = start_beat + t
