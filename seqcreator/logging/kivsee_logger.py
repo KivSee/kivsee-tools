@@ -18,5 +18,5 @@ def init():
         kivseeLogger.handler_set = True
 
 
-def get_logger():
-    return logging.getLogger(logger_name)
+# def get_logger():
+#     return logging.getLogger(logger_name)
