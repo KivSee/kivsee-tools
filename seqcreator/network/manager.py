@@ -1,12 +1,12 @@
 import requests
 from seqcreator import config
-from seqcreator.logging.kivsee_logger import kivseeLogger as logger
+from seqcreator.logging.logger import kivsee_logger as logger
 
 
 def stop():
     logger.debug("Triggering stop")
     response = requests.post(f"{config.raspberry_pi_addr}:{config.trigger_service_port}/stop")
-    logger.info(f"stop response {response.status_code}")
+    logger.info(f"Stop response {response.status_code}")
     return response
 
 

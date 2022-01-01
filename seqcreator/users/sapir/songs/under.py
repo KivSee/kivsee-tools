@@ -36,8 +36,8 @@ note_to_color = {
 
 
 class Under(Song):
-    def __init__(self, thing_names):
-        super().__init__("under", 147000, 0, thing_names)
+    def __init__(self, element_provider):
+        super().__init__("under", 147000, 0, element_provider)
 
     # @overrides(Song)
     def render_effects(self):

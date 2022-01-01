@@ -4,7 +4,8 @@ from seqcreator.users.sapir.me import Sapir
 # from seqcreator.users.amir.me import Amir
 # from seqcreator.users.bigler.me import Bigler
 
-class UserRouter(object):
+
+class Router(object):
 
     def __init__(self, name):
         if name == "amir":

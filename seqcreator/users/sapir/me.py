@@ -3,16 +3,19 @@ from seqcreator.users.user import User
 from seqcreator.network import manager
 from seqcreator.users.sapir.songs.deprecated import etta, baz, under_basic
 from seqcreator.users.sapir.songs.under import Under
+from seqcreator.logging.logger import kivsee_logger as logger
 
 
 class Sapir(User):
 
     def __init__(self):
-        super().__init__("sapir", ["spiral-small", "spiral-big"])
-        # TODO get the elements from the leds-object?
+        # TODO this is temporay, the element provider should retrieve the elements from the led-object-service
+        super().__init__("sapir", ["spiral-small", "spiral-big"],
+                         ["spiral1", "spiral2", "spiral3", "subout1", "subout2", "subout3", "subout4", "subout5",
+                          "subout6", "subout7", "subout8", "subout9", "subout10"])
 
     def play(self, trigger_name):
-        # logger.debug(f"{self.name}, {trigger_name} attempt to play!!!")
+        logger.debug(f"{self.name}, got request to create {trigger_name} sequence and play it.")
 
         if trigger_name == "baz":
             baz.build_and_store_sequence()
@@ -28,7 +31,7 @@ class Sapir(User):
 
         elif trigger_name == "under":
             # TODO sapir pass an element provider
-            under = Under(self.get_elements())
+            under = Under(self.element_provider)
             under.play()
 
         else:

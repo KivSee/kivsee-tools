@@ -1,22 +1,14 @@
 from abc import abstractmethod
-from seqcreator.network import manager
-
+from seqcreator.elements.element_provider import ElementProvider
+from seqcreator.logging.logger import kivsee_logger as logger
 
 class User:
 
-  @abstractmethod
-  def __init__(self, name, thing_names):
-      print(f"This is user: {name}")
-      self.name = name
-      self.thing_names = thing_names
-      # TODO sapir add song mapping
-      # self.songs_mapping = songs
+    @abstractmethod
+    def __init__(self, name, all_things, all_segments):
+        self.name = name
+        # TODO this is temporary, until we retreive the segments from the led-objects-service
+        self.element_provider = ElementProvider(name, all_things, all_segments)
 
-  def get_elements(self):
-      return self.thing_names
-
-  def get_segments(self, thing_name):
-      return manager.get_segments(thing_name)
-
-  def play(self, trigger_name):
-      raise Exception(f"{trigger_name} - not supported by parent class")
+    def play(self, trigger_name):
+        raise Exception(f"{trigger_name} - not supported by parent class")
