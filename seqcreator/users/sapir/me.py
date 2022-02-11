@@ -1,4 +1,6 @@
 from overrides import overrides
+
+from seqcreator.users.sapir.animations.warm import Warm
 from seqcreator.users.user import User
 from seqcreator.network import manager
 from seqcreator.users.sapir.songs.deprecated import etta, baz, under_basic
@@ -26,13 +28,17 @@ class Sapir(User):
             manager.play_song(trigger_name)
 
         elif trigger_name == "under_basic":
-            under_basic.build_and_store_sequence()
+            under_basic.build_and_store_sequence(self.elements)
             manager.play_song("under")
 
         elif trigger_name == "under":
             # TODO sapir pass an element provider
-            under = Under(self.element_provider)
+            under = Under(self.elements)
             under.play()
+
+        elif trigger_name == "warm":
+            warm = Warm(self.elements)
+            warm.play()
 
         else:
             raise Exception(f"trigger '{self.trigger_name}' not supported by '{self.name}'")

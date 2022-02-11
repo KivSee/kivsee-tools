@@ -1,6 +1,7 @@
 import requests
 from objectsetup.objects.sapir import spiralbig
 from objectsetup.objects.sapir import spiralsmall
+from objectsetup.objects.sapir import sofa
 
 
 def segment_const_color_effect(segment_name, hue):
@@ -32,7 +33,7 @@ mapping_trigger_name = "mapping"
 
 
 def configure(name, config):
-    requests.put(f"http://192.168.1.9:8081/led-object/{name}", json=config)
+    requests.put(f"http://192.168.1.9:8081/thing/{name}", json=config)
     sequence = mapping_sequence(config["segments"])
     res = requests.put(f"http://192.168.1.9:8082/triggers/{mapping_trigger_name}/objects/{name}", json=sequence)
     print(res)
@@ -40,6 +41,11 @@ def configure(name, config):
 
 
 def run():
-    configure("spiral-big", spiralbig.spiral_big_val)
-    configure("spiral-small", spiralsmall.spiral_small_val)
+    configure("spiral-big", spiralbig.val)
+    configure("spiral-small", spiralsmall.val)
+    configure("sofa", sofa.val)
+    # configure("osb", osb.val)
+    # configure("table", table.val)
+    # configure("kitchen", kitchen.val)
+    # configure("whisper", whisper.val)
     requests.post(f"http://192.168.1.9:8083/trigger/{mapping_trigger_name}")

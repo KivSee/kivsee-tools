@@ -1,33 +1,29 @@
-from seqcreator.infra.objects_provider import ObjectsProvider
 from seqcreator.rendering.effects import (rainbow, brightness, hue_shift, const_color)
 from seqcreator.rendering.function import functions_store
-
-#  TODO protect it to be package-private
-objectsProvider = ObjectsProvider()
 
 
 class ColoringEffectFactory:
 
-    def __init__(self, segments, effects_list_holder):
+    def __init__(self, elements, effects_list_holder):
         self.effects_list_holder = effects_list_holder
-        self.all_segments = segments
+        self.elements = elements
+        self.all_segments = elements.all_segments()
 
-    def uniform(self, color, group_of_segments):
-        temp_list = const_color.all_segments(group_of_segments, color)
+    def uniform(self, color, segments):
+        temp_list = const_color.all_segments(segments, color)
         self.effects_list_holder.extend(temp_list)
 
-        # print(self.effects_list_holder.effects_list)
-    #     ConstColorAnimation(color).apply()
-    #
+    def rainbow(self, start_hue, end_hue, segments):
+        temp_list = rainbow.all_segments(segments,
+                                         functions_store.linear_function(start_hue, end_hue),
+                                         functions_store.linear_function(end_hue, start_hue))
+        self.effects_list_holder.extend(temp_list)
+
     # def gradient(self, hue_start, hue_end):
     #     Rainbow(ConstFloatFunc(hue_start), ConstFloatFunc(hue_end)).apply()
     #
     # def alternate(self, color1, color2, number_of_pixels = 3):
     #     AlternateColoringAnimation(color1, color2, number_of_pixels).apply()
-
-# # TODO to be deleted
-# effect333 = []
-# coloring_effect = ColoringEffectFactory( "all", effect333 )
 
 
 class MaskingEffectFactory:
@@ -80,6 +76,7 @@ class MaskingEffectFactory:
     #
     def fade_in(self):
         pass
+
     #     BrightnessAnimation(LinearFloatFunc(0.0, 1.0)).apply()
     #
     def fade_out(self):

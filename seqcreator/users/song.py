@@ -1,19 +1,15 @@
-from abc import abstractmethod
-
 from seqcreator.animation.animation import Animation
-from seqcreator.infra.animations_factory import ColoringEffectFactory, MaskingEffectFactory
 from seqcreator.network import manager
-from seqcreator.users.effects_list_holder import EffectsListHolder
 from seqcreator.logging.logger import kivsee_logger as logger
 
 
 class Song(Animation):
 
-    def __init__(self, trigger, duration, repeats, element_provider):
-        super(Song, self).__init__(trigger, duration, repeats, element_provider)
+    def __init__(self, trigger, duration, repeats, elements):
+        super(Song, self).__init__(trigger, duration, repeats, elements)
 
     def render_effects(self):
-        # stub, overing in child impl
+        # stub, needs to be overridden by child
         pass
 
     def play(self):
