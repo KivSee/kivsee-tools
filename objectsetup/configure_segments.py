@@ -2,6 +2,10 @@ import requests
 from objectsetup.objects.sapir import spiralbig
 from objectsetup.objects.sapir import spiralsmall
 from objectsetup.objects.sapir import sofa
+from objectsetup.objects.sapir import osb
+from objectsetup.objects.sapir import table
+from objectsetup.objects.sapir import kitchen
+from objectsetup.objects.sapir import whisper
 
 
 def segment_const_color_effect(segment_name, hue):
@@ -44,8 +48,8 @@ def run():
     configure("spiral-big", spiralbig.val)
     configure("spiral-small", spiralsmall.val)
     configure("sofa", sofa.val)
-    # configure("osb", osb.val)
-    # configure("table", table.val)
-    # configure("kitchen", kitchen.val)
-    # configure("whisper", whisper.val)
+    configure("osb", osb.val)
+    configure("table", table.val)
+    configure("kitchen", kitchen.val)
+    configure("whisper", whisper.val)
     requests.post(f"http://192.168.1.9:8083/trigger/{mapping_trigger_name}")
