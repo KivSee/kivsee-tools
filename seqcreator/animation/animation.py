@@ -28,6 +28,7 @@ class Animation(object):
         }
 
     def store_sequence(self):
+        # lola
         logger.info(f"storing {self.trigger_name} sequence")
         seq = self.render()
         manager.store_sequence_all(self.trigger_name, seq, self.elements.all_things())
