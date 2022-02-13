@@ -31,7 +31,6 @@ class Animation(object):
         # lola
         logger.info(f"storing {self.trigger_name} sequence")
         seq = self.render()
-        # Temp2
         manager.store_sequence_all(self.trigger_name, seq, self.elements.all_things())
 
     def play(self):
