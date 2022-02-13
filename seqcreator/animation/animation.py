@@ -30,7 +30,7 @@ class Animation(object):
     def store_sequence(self):
         logger.info(f"storing {self.trigger_name} sequence")
         seq = self.render()
-        # Temp
+        # Temp2
         manager.store_sequence_all(self.trigger_name, seq, self.elements.all_things())
 
     def play(self):
