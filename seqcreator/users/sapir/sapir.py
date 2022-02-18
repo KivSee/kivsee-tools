@@ -19,8 +19,7 @@ class Sapir(User):
     def __init__(self):
         # TODO(Sapir): the element provider should retrieve the elements from the led-object-service
         super().__init__("sapir", ["spiral-small", "spiral-big"],
-                         ["spiral1", "spiral2", "spiral3", "subout1", "subout2", "subout3", "subout4", "subout5",
-                          "subout6", "subout7", "subout8", "subout9", "subout10"])
+                         ["spiral1", "spiral2", "spiral3"])
 
     def play(self, trigger_name):
         logger.debug(f"{self.name}, got request to create {trigger_name} sequence and play it.")

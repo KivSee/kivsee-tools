@@ -43,9 +43,8 @@ def configure(name, thing_segment_mapping):
     print("request sent")
 
 
-def run():
-    print(config.__dict__)
-    if config.user_name == "sapir":
+def run(user):
+    if user == "sapir":
         configure("spiral-big", spiralbig.val)
         configure("spiral-small", spiralsmall.val)
         configure("sofa", sofa.val)
@@ -53,9 +52,9 @@ def run():
         configure("table", table.val)
         configure("kitchen", kitchen.val)
         configure("whisper", whisper.val)
-    elif config.user_name == "amir":
+    elif user == "amir":
         pass
-    elif config.user_name == "bigler":
+    elif user == "bigler":
         pass
     else:
         print("User name is not supported")

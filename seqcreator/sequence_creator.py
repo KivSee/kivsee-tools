@@ -1,5 +1,5 @@
 import argparse
-import config
+
 
 import logging
 from seqcreator.logging.logger import kivsee_logger as logger
@@ -9,36 +9,30 @@ from seqcreator.users.sapir.sapir import Sapir
 # from seqcreator.users.bigler.bigler import Bigler
 
 
-def run():
-    # ---------------------------------
-    #         Argument Parser         #
-    # ---------------------------------
-    parser = argparse.ArgumentParser(description='Runs animations on objects.')
-    parser.add_argument('-t', dest='trigger', type=str, help='the name of the song or animation to play')
-    args = parser.parse_args()
-
+def run(user, trigger):
+    
     # -------------------------------------
     #       User specfic triggering       #
     # -------------------------------------
-    if config.user_name == "amir":
+    if user == "amir":
         # user = Amir()
         pass
-    elif config.user_name == "bigler":
+    elif user == "bigler":
         # user = Bigler()
         pass
-    elif config.user_name == "sapir":
+    elif user == "sapir":
         user = Sapir()
         pass
     else:
-        e = f"User {config.user_name} does not exists. Make sure it was defined in a .env file."
+        e = f"User {user} does not exists. Make sure it was defined in a .env file."
         raise Exception(e)
 
-    if args.trigger == "stop":
+    if trigger == "stop":
         manager.stop()
     else:
         try:
-            logger.info(f"Building and playing {args.trigger}....")
-            user.play(args.trigger)
+            logger.info(f"Building and playing {trigger}....")
+            user.play(trigger)
         except Exception as e:
-            logger.error(f"Failure for trigger {args.trigger}, error msg: {e} ")
+            logger.error(f"Failure for trigger {trigger}, error msg: {e} ")
             raise e
