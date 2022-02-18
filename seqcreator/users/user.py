@@ -1,8 +1,8 @@
-from abc import abstractmethod
+from abc import abstractmethod, ABC
 from seqcreator.elements.element_provider import ElementProvider
 from seqcreator.logging.logger import kivsee_logger as logger
 
-class User:
+class User(ABC):
 
     @abstractmethod
     def __init__(self, name, all_things, all_segments):

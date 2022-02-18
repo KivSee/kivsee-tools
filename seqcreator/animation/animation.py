@@ -1,10 +1,11 @@
+from abc import abstractmethod, ABC
 from seqcreator.rendering.effects_factory import ColoringEffectFactory, MaskingEffectFactory
 from seqcreator.network import manager
 from seqcreator.users.effects_list_holder import EffectsListHolder
 from seqcreator.logging.logger import kivsee_logger as logger
 
 
-class Animation(object):
+class Animation(ABC):
 
     def __init__(self, trigger, duration, repeats, elements):
         self.trigger_name = trigger
@@ -15,9 +16,9 @@ class Animation(object):
         self.coloring_effect = ColoringEffectFactory(self.elements, self.holder)
         self.masking_effect = MaskingEffectFactory(self.elements, self.holder)
 
+    @abstractmethod
     def render_effects(self):
-        # stub, needs to be overridden by child
-        pass
+        print("Should never get here, render_effects abstract impl")
 
     def render(self):
         self.render_effects()
@@ -28,13 +29,12 @@ class Animation(object):
         }
 
     def store_sequence(self):
-        # lola
         logger.info(f"storing {self.trigger_name} sequence")
         seq = self.render()
         manager.store_sequence_all(self.trigger_name, seq, self.elements.all_things())
 
     def play(self):
-        logger.info(f"Song: load {self.trigger_name}")
+        logger.info(f"load {self.trigger_name}")
         self.store_sequence()
-        logger.info(f"Song: playing {self.trigger_name}")
+        logger.info(f"starting soundless animation {self.trigger_name}")
         manager.play_animation(self.trigger_name)
