@@ -19,7 +19,7 @@ class Sapir(User):
 
         if trigger_name == "baz":
             baz.build_and_store_sequence()
-            manager.play_animation(trigger_name)
+            manager.play_soundless_animation(trigger_name)
 
         elif trigger_name == "etta":
             etta.build_and_store_sequence()

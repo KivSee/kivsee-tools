@@ -38,4 +38,4 @@ class SoundlessAnimation(ABC):
         logger.info(f"load {self.trigger_name}")
         self.store_sequence()
         logger.info(f"starting soundless animation {self.trigger_name}")
-        manager.play_animation(self.trigger_name)
+        manager.play_soundless_animation(self.trigger_name)
