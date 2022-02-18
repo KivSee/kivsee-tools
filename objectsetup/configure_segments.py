@@ -1,11 +1,11 @@
 import requests
-from objectsetup.objects.sapir import spiralbig
-from objectsetup.objects.sapir import spiralsmall
-from objectsetup.objects.sapir import sofa
-from objectsetup.objects.sapir import osb
-from objectsetup.objects.sapir import table
-from objectsetup.objects.sapir import kitchen
-from objectsetup.objects.sapir import whisper
+from objectsetup.mapping.sapir import spiralbig
+from objectsetup.mapping.sapir import spiralsmall
+from objectsetup.mapping.sapir import sofa
+from objectsetup.mapping.sapir import osb
+from objectsetup.mapping.sapir import table
+from objectsetup.mapping.sapir import kitchen
+from objectsetup.mapping.sapir import whisper
 import config
 
 def segment_const_color_effect(segment_name, hue):
@@ -60,4 +60,5 @@ def run():
     else:
         print("User name is not supported")
 
+    # Playng {mapping_trigger_name} sequence
     requests.post(f"{config.raspberry_pi_addr}:{config.trigger_service_port}/trigger/{mapping_trigger_name}")
