@@ -35,9 +35,9 @@ def mapping_sequence(segments):
 
 mapping_trigger_name = "mapping"
 
-def configure(name, config2):
-    requests.put(f"{config.raspberry_pi_addr}:{config.object_service_port}/thing/{name}", json=config2)
-    sequence = mapping_sequence(config2["segments"])
+def configure(name, thing_segment_mapping):
+    requests.put(f"{config.raspberry_pi_addr}:{config.object_service_port}/thing/{name}", json=thing_segment_mapping)
+    sequence = mapping_sequence(thing_segment_mapping["segments"])
     res = requests.put(f"{config.raspberry_pi_addr}:{config.sequence_service_port}/triggers/{mapping_trigger_name}/objects/{name}", json=sequence)
     print(res)
     print("request sent")
