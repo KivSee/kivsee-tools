@@ -1,8 +1,7 @@
 from seqcreator.users.sapir.songs.deprecated import under2
-from overrides import overrides
 from seqcreator.infra import timing
 from seqcreator.rendering.function import functions_store
-from seqcreator.users.song import Song
+from seqcreator.animations.song import Song
 
 
 note_to_elem1 = {
@@ -39,7 +38,6 @@ class Under(Song):
     def __init__(self, element_provider):
         super().__init__("under", 147000, 0, element_provider)
 
-    # @overrides(Song)
     def render_effects(self):
         timing.song_settings(bpm=128, beats_per_episode=32, start_offset=0)
         timing.beats(2, 20)

@@ -17,7 +17,7 @@ def play_song(trigger_name):
     return response
 
 
-def play_animation(trigger_name):
+def play_soundless_animation(trigger_name):
     logger.debug("Playing animation")
     response = requests.post(f"{config.raspberry_pi_addr}:{config.trigger_service_port}/trigger/{trigger_name}")
     logger.info(f"Triggering animation {trigger_name} - status code ({response.status_code})")

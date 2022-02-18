@@ -5,7 +5,7 @@ from seqcreator.users.effects_list_holder import EffectsListHolder
 from seqcreator.logging.logger import kivsee_logger as logger
 
 
-class Animation(ABC):
+class SoundlessAnimation(ABC):
 
     def __init__(self, trigger, duration, repeats, elements):
         self.trigger_name = trigger

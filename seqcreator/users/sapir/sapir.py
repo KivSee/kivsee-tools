@@ -1,6 +1,4 @@
-from overrides import overrides
-
-from seqcreator.users.sapir.animations.warm import Warm
+from seqcreator.users.sapir.soundless_animations.warm import Warm
 from seqcreator.users.user import User
 from seqcreator.network import manager
 from seqcreator.users.sapir.songs.deprecated import etta, baz, under_basic
@@ -11,7 +9,7 @@ from seqcreator.logging.logger import kivsee_logger as logger
 class Sapir(User):
 
     def __init__(self):
-        # TODO this is temporay, the element provider should retrieve the elements from the led-object-service
+        # TODO(Sapir): the element provider should retrieve the elements from the led-object-service
         super().__init__("sapir", ["spiral-small", "spiral-big"],
                          ["spiral1", "spiral2", "spiral3", "subout1", "subout2", "subout3", "subout4", "subout5",
                           "subout6", "subout7", "subout8", "subout9", "subout10"])
@@ -32,7 +30,7 @@ class Sapir(User):
             manager.play_song("under")
 
         elif trigger_name == "under":
-            # TODO sapir pass an element provider
+            # TODO(sapir): pass an element provider
             under = Under(self.elements)
             under.play()
 

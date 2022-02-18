@@ -1,17 +1,16 @@
-from seqcreator.animation.animation import Animation
+from seqcreator.animations.soundless_animation import SoundlessAnimation
 from seqcreator.users.sapir.songs.deprecated import under2
-from overrides import overrides
 from seqcreator.infra import timing
 from seqcreator.rendering.function import functions_store
-from seqcreator.users.song import Song
+from seqcreator.animations.song import Song
 
 
-class Warm(Animation):
+class Warm(SoundlessAnimation):
     def __init__(self, element_provider):
         super().__init__("warm", 100, 0, element_provider)
 
     def render_effects(self):
-        # TODO sapir this should not be here, fix time factory issues
+        # TODO(sapir): this should not be here, fix time factory issues
         timing.song_settings(bpm=128, beats_per_episode=32, start_offset=0)
         timing.beats(0, 100)
         # Add colors

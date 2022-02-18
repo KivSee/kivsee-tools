@@ -1,10 +1,10 @@
 from abc import abstractmethod
-from seqcreator.animation.animation import Animation
+from seqcreator.animations.soundless_animation import SoundlessAnimation
 from seqcreator.network import manager
 from seqcreator.logging.logger import kivsee_logger as logger
 
 
-class Song(Animation):
+class Song(SoundlessAnimation):
 
     def __init__(self, trigger, duration, repeats, elements):
         super(Song, self).__init__(trigger, duration, repeats, elements)
