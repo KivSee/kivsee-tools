@@ -1,3 +1,4 @@
+from seqcreator.elements import element_provider
 from seqcreator.users.sapir.soundless_animations.warm import Warm
 from seqcreator.users.user import User
 from seqcreator.network import manager
@@ -18,18 +19,18 @@ class Sapir(User):
 
     def __init__(self):
         # TODO(Sapir): the element provider should retrieve the elements from the led-object-service
-        super().__init__("sapir", ["spiral-small", "spiral-big"],
-                         ["spiral1", "spiral2", "spiral3"])
+        super().__init__('sapir')
+        element_provider.set_element_provider(element_provider.ElementProvider('sapir'))
 
     def play(self, trigger_name):
         logger.debug(f"{self.name}, got request to create {trigger_name} sequence and play it.")
 
         if trigger_name == "warm":
-            warm = Warm(self.elements)
+            warm = Warm()
             warm.play()
 
         elif trigger_name == "under":
-            under = Under(self.elements)
+            under = Under()
             under.play()
         
         else:

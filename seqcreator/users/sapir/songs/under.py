@@ -1,3 +1,5 @@
+from seqcreator.infra.color import Color
+from seqcreator.rendering.effects import coloring
 from seqcreator.users.sapir.songs.deprecated import under2
 from seqcreator.infra import timing
 from seqcreator.rendering.function import functions_store
@@ -46,7 +48,13 @@ class Under(Song):
             # TODO fix with amir - elements provider
             groups_of_segments = [note_to_elem1[note]]
             c = note_to_color[note]
+            # elemnt_provider.set_current([])
+            # coloring.uniform(color.blue)
+            coloring.uniform(Color(0.0, 1.0, 0.5))
+
             self.coloring_effect.uniform([c[0], 0.5, 0.3], groups_of_segments)
+            self.coloring_effect.rainbow([c[0], 0.5, 0.3], groups_of_segments)
+            self.coloring_effect.snake([c[0], 0.5, 0.3], groups_of_segments)
 
         start_beat = 2
         end_beat = 10

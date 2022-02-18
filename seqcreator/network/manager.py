@@ -35,12 +35,15 @@ def store_sequence_thing(trigger_name, seq, thing_name):
         logger.error(f"{response.content}")
 
 
-def store_sequence_all(trigger_name, seq, thing_names):
-    logger.debug(f"Storing sequence of multiple things, amount {len(thing_names)}")
-    for thing_name in thing_names:
-        logger.debug(f"Storing for thing {thing_name}")
-        store_sequence_thing(trigger_name, seq, thing_name)
-
+def store_sequence_all(trigger_name, per_thing_config):
+    logger.debug(f"Storing sequence of multiple things, amount {len(per_thing_config)}")
+    response = requests.put(
+        f"{config.raspberry_pi_addr}:{config.sequence_service_port}/triggers/{trigger_name}",
+        json=per_thing_config)
+    logger.info(
+        f"Storing sequence: {trigger_name} - status code ({response.status_code})")
+    if response.status_code != 200:
+        logger.error(f"{response.content}")
 
 def get_segments(thing_name):
     logger.debug("Getting segments from service for thing: {thing_name}")
