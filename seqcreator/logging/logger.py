@@ -1,6 +1,6 @@
 import logging
 import sys
-from seqcreator import config
+import config
 
 logger_name = 'kivsee'
 kivsee_logger = logging.getLogger(logger_name)

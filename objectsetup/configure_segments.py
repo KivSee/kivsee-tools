@@ -6,7 +6,7 @@ from objectsetup.objects.sapir import osb
 from objectsetup.objects.sapir import table
 from objectsetup.objects.sapir import kitchen
 from objectsetup.objects.sapir import whisper
-
+import config
 
 def segment_const_color_effect(segment_name, hue):
     return {
@@ -35,21 +35,29 @@ def mapping_sequence(segments):
 
 mapping_trigger_name = "mapping"
 
-
-def configure(name, config):
-    requests.put(f"http://192.168.1.9:8081/thing/{name}", json=config)
-    sequence = mapping_sequence(config["segments"])
-    res = requests.put(f"http://192.168.1.9:8082/triggers/{mapping_trigger_name}/objects/{name}", json=sequence)
+def configure(name, config2):
+    requests.put(f"{config.raspberry_pi_addr}:{config.object_service_port}/thing/{name}", json=config2)
+    sequence = mapping_sequence(config2["segments"])
+    res = requests.put(f"{config.raspberry_pi_addr}:{config.sequence_service_port}/triggers/{mapping_trigger_name}/objects/{name}", json=sequence)
     print(res)
     print("request sent")
 
 
 def run():
-    configure("spiral-big", spiralbig.val)
-    configure("spiral-small", spiralsmall.val)
-    configure("sofa", sofa.val)
-    configure("osb", osb.val)
-    configure("table", table.val)
-    configure("kitchen", kitchen.val)
-    configure("whisper", whisper.val)
-    requests.post(f"http://192.168.1.9:8083/trigger/{mapping_trigger_name}")
+    print(config.__dict__)
+    if config.user_name == "sapir":
+        configure("spiral-big", spiralbig.val)
+        configure("spiral-small", spiralsmall.val)
+        configure("sofa", sofa.val)
+        configure("osb", osb.val)
+        configure("table", table.val)
+        configure("kitchen", kitchen.val)
+        configure("whisper", whisper.val)
+    elif config.user_name == "amir":
+        pass
+    elif config.user_name == "bigler":
+        pass
+    else:
+        print("User name is not supported")
+
+    requests.post(f"{config.raspberry_pi_addr}:{config.trigger_service_port}/trigger/{mapping_trigger_name}")

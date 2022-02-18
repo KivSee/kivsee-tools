@@ -1,5 +1,5 @@
 import requests
-from seqcreator import config
+import config
 from seqcreator.logging.logger import kivsee_logger as logger
 
 
