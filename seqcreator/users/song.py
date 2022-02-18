@@ -9,10 +9,6 @@ class Song(Animation):
     def __init__(self, trigger, duration, repeats, elements):
         super(Song, self).__init__(trigger, duration, repeats, elements)
 
-    @abstractmethod
-    def render_effects(self):
-        print("Should never get here, render_effects abstract impl")
-
     def play(self):
         logger.info(f"load {self.trigger_name}")
         self.store_sequence()

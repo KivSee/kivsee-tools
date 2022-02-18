@@ -18,7 +18,8 @@ class Animation(ABC):
 
     @abstractmethod
     def render_effects(self):
-        print("Should never get here, render_effects abstract impl")
+        """The business logic, the method the builds the sequence.
+        """
 
     def render(self):
         self.render_effects()
