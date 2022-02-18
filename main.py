@@ -1,6 +1,6 @@
 from objectsetup import configure_segments
-from seqcreator import creator
+from seqcreator import sequence_creator
 
 if __name__ == '__main__':
-    #creator.run()
-    configure_segments.run()
+    sequence_creator.run()
+    # configure_segments.run()
