@@ -1,8 +1,7 @@
-from seqcreator.infra.color import Color
-from seqcreator.rendering.effects import coloring
-from seqcreator.users.sapir.songs.deprecated import under2
-from seqcreator.infra import timing
-from seqcreator.rendering.function import functions_store
+from seqcreator.api.color import Color
+from seqcreator.api import coloring
+from seqcreator.api import timing
+from seqcreator.rendering.effects.deprecated import functions_store
 from seqcreator.animations.song import Song
 
 

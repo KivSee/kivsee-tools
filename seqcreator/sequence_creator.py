@@ -2,8 +2,8 @@ import argparse
 
 
 import logging
-from seqcreator.logging.logger import kivsee_logger as logger
-from seqcreator.network import manager
+from seqcreator.infra.logger import kivsee_logger as logger
+from seqcreator.infra import network_manager
 from seqcreator.users.sapir.sapir import Sapir
 # from seqcreator.users.amir.amir import Amir
 # from seqcreator.users.bigler.bigler import Bigler
@@ -28,7 +28,7 @@ def run(user, trigger):
         raise Exception(e)
 
     if trigger == "stop":
-        manager.stop()
+        network_manager.stop()
     else:
         try:
             logger.info(f"Building and playing {trigger}....")

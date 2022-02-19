@@ -1,6 +1,6 @@
 import requests
 import config
-from seqcreator.logging.logger import kivsee_logger as logger
+from seqcreator.infra.logger import kivsee_logger as logger
 
 
 def stop():

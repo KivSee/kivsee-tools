@@ -1,8 +1,10 @@
-from seqcreator.network import manager
-from seqcreator.logging.logger import kivsee_logger as logger
+from abc import ABC
+from seqcreator.infra import network_manager
+from seqcreator.infra.logger import kivsee_logger as logger
 
 
-class ElementProvider:
+# TODO(sapir): this class should be an interface, move the implementation to the users
+class ElementProvider(ABC):
 
     def __init__(self, user_name):
         self._user_name = user_name
@@ -15,6 +17,7 @@ class ElementProvider:
             "table": ["1", "2", "3", "4"]
         }
 
+    
     def current_segments(self):
         return [('spiral-big', 'spiral1'), ('osb', '1')]
 

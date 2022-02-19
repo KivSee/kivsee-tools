@@ -1,5 +1,5 @@
-from seqcreator.infra import timing
-from seqcreator.rendering.function import functions_store
+from seqcreator.api import timing
+from seqcreator.rendering.effects.deprecated import functions_store
 
 
 def rainbow_effect(segment_name, start_time, end_time, function_start, function_end):

@@ -1,10 +1,10 @@
 
 from abc import ABC, abstractmethod
 
-from seqcreator.infra import timing
+from seqcreator.api import timing
 
 
-class Effect(ABC):
+class BaseEffect(ABC):
 
     def __init__(self):
         super().__init__()

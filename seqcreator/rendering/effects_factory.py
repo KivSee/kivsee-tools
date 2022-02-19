@@ -1,4 +1,4 @@
-from seqcreator.elements.element_provider import get_element_provider
+from seqcreator.api.element_provider import get_element_provider
 
 class Effects:
 

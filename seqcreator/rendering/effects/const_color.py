@@ -1,8 +1,8 @@
-from seqcreator.infra import timing
-from seqcreator.infra.color import Color
-from seqcreator.rendering.effects.effect import Effect
+from seqcreator.api import timing
+from seqcreator.api.color import Color
+from seqcreator.rendering.effects.base_effect import BaseEffect
 
-class ConstColor(Effect):
+class ConstColor(BaseEffect):
 
     def __init__(self, color: Color):
         super().__init__()

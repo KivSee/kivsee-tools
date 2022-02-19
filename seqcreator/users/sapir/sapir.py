@@ -1,24 +1,13 @@
-from seqcreator.elements import element_provider
+from seqcreator.api import element_provider
 from seqcreator.users.sapir.soundless_animations.warm import Warm
 from seqcreator.users.user import User
-from seqcreator.network import manager
-from seqcreator.users.sapir.songs.deprecated import etta, baz, under_basic
+from seqcreator.infra import network_manager
 from seqcreator.users.sapir.songs.under import Under
-from seqcreator.logging.logger import kivsee_logger as logger
-
-# all_things = {
-#   "spiral-small": ["spiral1", "spiral2", "spiral3", "subout1", "subout2", "subout3", "subout4", "subout5",
-#                           "subout6", "subout7", "subout8", "subout9", "subout10"],
-#   "spiral-big": ["spiral1", "spiral2", "spiral3", "spiral4", "spiral5", "subout1", "subout2", "subout3", "subout4", "subout5",
-#                           "subout6", "subout7", "subout8", "subout9", "subout10"],
-#   "osb": ["1", "2", "3", "4"],
-#   "table": ["1", "2", "3", "4"]
-# }
+from seqcreator.infra.logger import kivsee_logger as logger
 
 class Sapir(User):
 
     def __init__(self):
-        # TODO(Sapir): the element provider should retrieve the elements from the led-object-service
         super().__init__('sapir')
         element_provider.set_element_provider(element_provider.ElementProvider('sapir'))
 

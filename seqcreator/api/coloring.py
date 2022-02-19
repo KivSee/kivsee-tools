@@ -1,5 +1,5 @@
 
-from seqcreator.infra.color import Color
+from seqcreator.api.color import Color
 from seqcreator.rendering.effects import const_color
 from seqcreator.rendering.effects_factory import get_effects
 
