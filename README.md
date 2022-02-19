@@ -1,6 +1,5 @@
 # Instructions
-Create a .env file in the root direcory with the local properties, as described in .env_template 
-Implement the relevant mapping and sequence for your home. 
+Create a .env file in the root direcory with the local properties, as described in .env_template then implement the relevant mapping and sequence for your home. 
 
 ## How to run the tool:
 
