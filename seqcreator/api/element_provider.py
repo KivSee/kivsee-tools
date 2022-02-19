@@ -1,25 +1,19 @@
-from abc import ABC
-from seqcreator.infra import network_manager
+from abc import ABC, abstractmethod
 from seqcreator.infra.logger import kivsee_logger as logger
 
 
-# TODO(sapir): this class should be an interface, move the implementation to the users
 class ElementProvider(ABC):
 
     def __init__(self, user_name):
         self._user_name = user_name
-        self.thing_to_segments = {
-            "spiral-small": ["spiral1", "spiral2", "spiral3", "subout1", "subout2", "subout3", "subout4", "subout5",
-                                    "subout6", "subout7", "subout8", "subout9", "subout10"],
-            "spiral-big": ["spiral1", "spiral2", "spiral3", "spiral4", "spiral5", "subout1", "subout2", "subout3", "subout4", "subout5",
-                                    "subout6", "subout7", "subout8", "subout9", "subout10"],
-            "osb": ["1", "2", "3", "4"],
-            "table": ["1", "2", "3", "4"]
-        }
-
     
+    @abstractmethod
     def current_segments(self):
-        return [('spiral-big', 'spiral1'), ('osb', '1')]
+        """Provides the current semgments to be rendered.
+
+        Returns:
+            list: [('thing_name', 'segment_name'), ('thing_name', 'segment_name')]
+        """
 
 _ELEMENTS = None
 
