@@ -6,6 +6,7 @@ from objectsetup.mapping.sapir import osb
 from objectsetup.mapping.sapir import table
 from objectsetup.mapping.sapir import kitchen
 from objectsetup.mapping.sapir import whisper
+from objectsetup.mapping.bigler import curtains
 import config
 
 def segment_const_color_effect(segment_name, hue):
@@ -55,7 +56,7 @@ def run(user):
     elif user == "amir":
         pass
     elif user == "bigler":
-        pass
+        configure("curtains", curtains.val)
     else:
         print("User name is not supported")
 
