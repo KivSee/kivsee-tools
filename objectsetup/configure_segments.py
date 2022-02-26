@@ -7,6 +7,9 @@ from objectsetup.mapping.sapir import table
 from objectsetup.mapping.sapir import kitchen
 from objectsetup.mapping.sapir import whisper
 from objectsetup.mapping.bigler import curtains
+from objectsetup.mapping.bigler import shelf
+from objectsetup.mapping.bigler import kitchen
+from objectsetup.mapping.bigler import ac_top
 import config
 
 def segment_const_color_effect(segment_name, hue):
@@ -57,6 +60,9 @@ def run(user):
         pass
     elif user == "bigler":
         configure("curtains", curtains.val)
+        configure("shelf", shelf.val)
+        configure("kitchen", kitchen.val)
+        configure("ac_top", ac_top.val)
     else:
         print("User name is not supported")
 
