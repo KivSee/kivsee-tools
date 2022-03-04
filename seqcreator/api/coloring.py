@@ -10,9 +10,9 @@ def uniform(color: Color):
     get_effects().add_effect(const_color.ConstColor(color))
 
 
-def rainbow(start: float = 0, end: float = 1, speed: int = 0):
+def rainbow(start: float = 0, end: float = 1, range: int = 1, speed: int = 0):
     get_effects().add_effect(Rainbow(linear_function(start , end + speed),
-                                     linear_function(start + 1, end + speed + 1)))
+                                     linear_function(start + range, end + range + speed)))
 
 
 def rainbow_collide(start: float = 0, end: float = 1):
