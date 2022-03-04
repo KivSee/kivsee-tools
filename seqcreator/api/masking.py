@@ -13,12 +13,20 @@ def hue_shift(offset_factor):
 # Brightness modifications:
 
 
+# def sin_dim(max_dim):
+#     get_effects().add_effect(Brightness(sin_function(0, mult_factor)))
+
+
 def brightness(mult_factor):
-    get_effects().add_effect(Brightness(sin_function(0, mult_factor)))
+    get_effects().add_effect(Brightness(linear_function(0, mult_factor)))
 
 
 def fade_out():
     get_effects().add_effect(Brightness(linear_function(1, 0)))
+
+
+def fade_in():
+    get_effects().add_effect(Brightness(linear_function(0, 1)))
 
 # Saturation modifications:
 
