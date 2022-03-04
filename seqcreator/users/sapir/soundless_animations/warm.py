@@ -12,10 +12,9 @@ class Warm(SoundlessAnimation):
     def render_effects(self):
         timing.song_settings(bpm=128, beats_per_episode=32, start_offset=0)
 
-        timing.beats(0, 10)
-        coloring.rainbow()
+        timing.beats(0, 16)
+        coloring.rainbow(speed=4)
 
-        timing.beats(10, 20)
-        coloring.uniform(Color(0.25, 1.0, 0.5))
+
 
         
