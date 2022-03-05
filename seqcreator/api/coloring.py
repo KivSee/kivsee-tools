@@ -21,6 +21,7 @@ def rainbow_collide(start: float = 0, end: float = 1):
         start, end), linear_function(end, start)))
 
 
+#TODO: Change to ConstColor from Rainbow (Currently receives identical values for "start" and "end" == constant color)
 def hue_range(start: float = 0, end: float = 1, speed: int = 1):
     get_effects().add_effect(Rainbow(sin_function(start, end, 0, speed),
                                      sin_function(start, end, 0, speed)))
