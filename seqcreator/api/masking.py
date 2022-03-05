@@ -2,7 +2,7 @@ from seqcreator.rendering.effects.hue_shift import HueShift
 from seqcreator.rendering.effects.brightness import Brightness
 from seqcreator.rendering.effects.saturation import Saturation
 from seqcreator.rendering.effects_factory import get_effects
-from seqcreator.rendering.functions.functions_store import linear_function, repeat_function, sin_function
+from seqcreator.rendering.functions.functions_store import const_function, linear_function, repeat_function, sin_function
 
 
 # Hue modifications:
@@ -24,7 +24,7 @@ def brightness_saw(min_brightness: int = 0, max_brightness: int = 1, repeat: int
 
 
 def brightness(mult_factor):
-    get_effects().add_effect(Brightness(linear_function(0, mult_factor)))
+    get_effects().add_effect(Brightness(const_function(mult_factor)))
 
 
 def fade_out():
@@ -38,4 +38,4 @@ def fade_in():
 
 
 def saturation(mult_factor):
-    get_effects().add_effect(Saturation(linear_function(0, mult_factor)))
+    get_effects().add_effect(Saturation(const_function(mult_factor)))
