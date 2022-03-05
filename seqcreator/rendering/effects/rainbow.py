@@ -2,6 +2,7 @@ from seqcreator.api import timing
 from seqcreator.api.color import Color
 from seqcreator.rendering.effects.base_effect import BaseEffect
 
+
 class Rainbow(BaseEffect):
 
     def __init__(self, start, end):
@@ -11,8 +12,8 @@ class Rainbow(BaseEffect):
 
     def get_effect_params_json(self):
         return {
-        "rainbow": {
-            "hue_start": self.function_start,
-            "hue_end": self.function_end
+            "rainbow": {
+                "hue_start": self.function_start,
+                "hue_end": self.function_end
             }
         }
