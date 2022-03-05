@@ -48,4 +48,12 @@ def store_sequence_all(trigger_name, per_thing_config):
 def get_segments(thing_name):
     logger.debug("Getting segments from service for thing: {thing_name}")
     logger.info(f"Getting segments of {thing_name}")
-    return requests.get(f"{config.raspberry_pi_addr}:{config.object_service_port}/led-object/{thing_name}")
+    return requests.get(f"{config.raspberry_pi_addr}:{config.object_service_port}/thing/{thing_name}")
+
+
+def get_all_segments():
+    logger.info(f"Getting all segments of all things")
+    response = requests.get(f"{config.raspberry_pi_addr}:{config.object_service_port}/thing")
+    logger.info(
+        f"Get all segments - status code ({response.status_code})")
+    return response.content
