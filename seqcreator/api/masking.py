@@ -12,7 +12,6 @@ def hue_shift(offset_factor):
 
 # Brightness modifications:
 
-
 def brightness_sin(min_brightness: int = 0, max_brightness: int = 1, speed: int = 1):
     get_effects().add_effect(Brightness(sin_function(
         min_brightness, max_brightness, 0, speed)))

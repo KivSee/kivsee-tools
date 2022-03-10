@@ -16,6 +16,6 @@ class Warm(SoundlessAnimation):
 
         self.elements.set_all()
         timing.beats(0, 64)
-        coloring.hue_range(0.35, 0.45, 5)
-        masking.Brightness(linear_function(0.2, 0.4))
+        coloring.hue_range(0.3, 0.315, 3)
+        masking.brightness(0.6)
         
