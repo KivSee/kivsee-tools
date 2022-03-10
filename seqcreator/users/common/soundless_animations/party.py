@@ -16,7 +16,7 @@ class Party(SoundlessAnimation):
         timing.song_settings(bpm=128, beats_per_episode=32, start_offset=0)
 
         self.elements.set_all()
-        timing.beats(0, 32)
+        timing.beats(0, 128)
         coloring.rainbow(speed=6)
         masking.Brightness(const_function(0.8))
 

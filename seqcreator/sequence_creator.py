@@ -4,6 +4,7 @@ import argparse
 import logging
 from seqcreator.infra.logger import kivsee_logger as logger
 from seqcreator.infra import network_manager
+from seqcreator.users.amir.amir import Amir
 from seqcreator.users.sapir.sapir import Sapir
 # from seqcreator.users.amir.amir import Amir
 from seqcreator.users.bigler.bigler import Bigler
@@ -15,7 +16,7 @@ def run(user, trigger):
     #       User specfic triggering       #
     # -------------------------------------
     if user == "amir":
-        # user = Amir()
+        user = Amir()
         pass
     elif user == "bigler":
         user = Bigler()
