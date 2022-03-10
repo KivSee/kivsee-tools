@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from seqcreator.users.common.soundless_animations.Romantic import Romantic
 from seqcreator.users.common.soundless_animations.even import Even
 from seqcreator.users.common.soundless_animations.party import Party
 from seqcreator.users.common.soundless_animations.warm import Warm
@@ -25,6 +26,8 @@ class User(ABC):
             Party().play()
         elif trigger_name == "even":
             Even().play()
+        elif trigger_name == "romantic":
+            Romantic().play()
         else:
             return False
 

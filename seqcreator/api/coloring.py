@@ -16,6 +16,12 @@ def rainbow(start: float = 0, end: float = 1, range: int = 1, speed: int = 0):
                                      linear_function(start + range, end + range + speed)))
 
 
+def rainbow_static(start: float = 0, end: float = 1):
+    get_effects().add_effect(Rainbow(const_function(start),
+                                     const_function(end)))
+
+
+
 def rainbow_collide(start: float = 0, end: float = 1):
     get_effects().add_effect(Rainbow(linear_function(
         start, end), linear_function(end, start)))
