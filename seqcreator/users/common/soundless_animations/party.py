@@ -15,8 +15,7 @@ class Party(SoundlessAnimation):
     def render_effects(self):
         timing.song_settings(bpm=128, beats_per_episode=32, start_offset=0)
 
-        # print(self.elements.living_room())
-        self.elements.set([("whisper", "1"), ("whisper", "3")])
+        self.elements.set_all()
         timing.beats(0, 32)
         coloring.rainbow(speed=6)
         masking.Brightness(const_function(0.8))

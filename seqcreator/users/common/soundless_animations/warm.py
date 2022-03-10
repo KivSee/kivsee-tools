@@ -4,7 +4,7 @@ from seqcreator.api import timing
 from seqcreator.api.color import Color
 from seqcreator.api import coloring, masking
 from seqcreator.api import element_provider
-from seqcreator.rendering.functions.functions_store import const_function
+from seqcreator.rendering.functions.functions_store import linear_function
 
 class Warm(SoundlessAnimation):
     def __init__(self):
@@ -16,6 +16,6 @@ class Warm(SoundlessAnimation):
 
         self.elements.set_all()
         timing.beats(0, 64)
-        coloring.hue_range(0.25, 0.45, 5)
-        masking.Brightness(const_function(0.8))
+        coloring.hue_range(0.35, 0.45, 5)
+        masking.Brightness(linear_function(0.2, 0.4))
         
