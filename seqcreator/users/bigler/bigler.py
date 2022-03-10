@@ -1,6 +1,6 @@
 from seqcreator.api import element_provider
 from seqcreator.users.bigler.elements import Elements
-from seqcreator.users.bigler.soundless_animations.deprecated import Warm
+from seqcreator.users.bigler.soundless_animations.warm_deprecated import Warm
 from seqcreator.users.user import User
 from seqcreator.infra import network_manager
 from seqcreator.infra.logger import kivsee_logger as logger
