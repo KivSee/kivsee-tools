@@ -1,5 +1,6 @@
 from seqcreator.api import element_provider
 from seqcreator.users.sapir.elements import Elements
+from seqcreator.users.sapir.soundless_animations.party import Party
 from seqcreator.users.sapir.soundless_animations.warm import Warm
 from seqcreator.users.user import User
 from seqcreator.infra import network_manager
@@ -16,13 +17,15 @@ class Sapir(User):
     def play(self, trigger_name):
         logger.debug(f"{self.name}, got request to create {trigger_name} sequence and play it.")
 
+        # TODO(sapir): let the animation store itself in a registery and remove this list of conditions
         if trigger_name == "warm":
-            warm = Warm()
-            warm.play()
+            Warm().play()
 
         elif trigger_name == "under":
-            under = Under()
-            under.play()
+            Under().play()
+
+        elif trigger_name == "party":
+            Party().play()
         
         else:
             raise Exception(f"trigger '{self.trigger_name}' not supported by '{self.name}'")

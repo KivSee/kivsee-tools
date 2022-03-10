@@ -1,7 +1,7 @@
 from seqcreator.api.color import Color
 from seqcreator.api import coloring
 from seqcreator.api import timing
-from seqcreator.rendering.effects.deprecated import functions_store
+from seqcreator.rendering.functions import functions_store
 from seqcreator.animations.song import Song
 
 
