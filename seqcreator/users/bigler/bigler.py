@@ -13,11 +13,8 @@ class Bigler(User):
         element_provider.set_element_provider(self.elements)
 
     def play(self, trigger_name):
-        logger.debug(f"{self.name}, got request to create {trigger_name} sequence and play it.")
-
-        if trigger_name == "warm":
-            warm = Warm()
-            warm.play()
+        if super().play(trigger_name):
+           return True
 
         # elif trigger_name == "under":
         #     under = Under()
