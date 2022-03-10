@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from seqcreator.users.common.soundless_animations.evens import Evens
 from seqcreator.users.common.soundless_animations.party import Party
 from seqcreator.users.common.soundless_animations.warm import Warm
 from seqcreator.infra.logger import kivsee_logger as logger
@@ -22,6 +23,8 @@ class User(ABC):
             Warm().play()
         elif trigger_name == "party":
             Party().play()
+        elif trigger_name == "evens":
+            Evens().play()
         else:
             return False
 

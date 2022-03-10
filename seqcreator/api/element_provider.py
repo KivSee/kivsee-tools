@@ -57,6 +57,22 @@ class ElementProvider(ABC):
             self.all_segments = self.fetch_all_tuples()
         return self.all_segments
 
+    def all_evens(self):
+        """Returns all evens
+
+        Returns:
+            list: returns a list of tuples [(thing_name, segment_name), (thing_name, segment_name), ...]
+        """
+        return self.all()[::2]
+
+    def all_odds(self):
+        """Returns all odds
+
+        Returns:
+            list: returns a list of tuples [(thing_name, segment_name), (thing_name, segment_name), ...]
+        """
+        return self.all()[1::2]
+
 _ELEMENTS = None
 
 def set_element_provider(elements_provider: ElementProvider):

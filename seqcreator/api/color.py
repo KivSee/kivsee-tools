@@ -5,3 +5,7 @@ class Color:
         self.hue = hue
         self.sat = sat
         self.val = val
+
+LIGHT_PURPLE = Color(0.4)
+LIGHT_TURQUOISE = Color(0.8)
+RED = Color(0.0)

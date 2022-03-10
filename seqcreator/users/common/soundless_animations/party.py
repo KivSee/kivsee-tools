@@ -1,7 +1,6 @@
 
 from seqcreator.animations.soundless_animation import SoundlessAnimation
 from seqcreator.api import timing
-from seqcreator.api.color import Color
 from seqcreator.api import coloring, masking
 from seqcreator.api import element_provider
 from seqcreator.rendering.functions.functions_store import const_function
