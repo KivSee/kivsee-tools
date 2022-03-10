@@ -19,5 +19,3 @@ class Party(SoundlessAnimation):
         timing.beats(0, 128)
         coloring.rainbow(speed=6)
         masking.Brightness(const_function(0.8))
-
-        

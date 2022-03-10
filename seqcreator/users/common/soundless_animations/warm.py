@@ -1,9 +1,12 @@
 
+from asyncio.log import logger
+import config
 from seqcreator.animations.soundless_animation import SoundlessAnimation
 from seqcreator.api import timing
 from seqcreator.api.color import Color
 from seqcreator.api import coloring, masking
 from seqcreator.api import element_provider
+from seqcreator.infra.logger import kivsee_logger as logger
 from seqcreator.rendering.functions.functions_store import linear_function
 
 class Warm(SoundlessAnimation):
@@ -16,6 +19,8 @@ class Warm(SoundlessAnimation):
 
         self.elements.set_all()
         timing.beats(0, 64)
-        coloring.hue_range(0.3, 0.315, 3)
-        masking.brightness(0.6)
+        coloring.hue_range(0.025, 0.035,0)
+        logger.info(f"Adjusting brightness level to {config.brightness_level}")
+        masking.brightness(config.brightness_level)
+        
         
