@@ -17,7 +17,7 @@ class Warm(SoundlessAnimation):
     def render_effects(self):
         timing.song_settings(bpm=128, beats_per_episode=32, start_offset=0)
 
-        self.elements.set_all()
+        self.elements.set(self.elements.all())
         timing.beats(0, 64)
         coloring.hue_range(0.025, 0.035,0)
         logger.info(f"Adjusting brightness level to {config.brightness_level}")

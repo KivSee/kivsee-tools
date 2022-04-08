@@ -10,6 +10,7 @@ class ElementProvider(ABC):
         self.current = []
         self._user_name = user_name
         self.all_segments = []
+        self.all_things = []
     
     
     def fetch_all_tuples(self) -> list:
@@ -54,8 +55,12 @@ class ElementProvider(ABC):
         Returns:
             tuples (list): list of tuples [(thing_name, "all"), (thing_name, "all") ...]
         """
-        self.all_things = self.fetch_all_things()
+        if len(self.all_things) == 0:
+            self.all_things = self.fetch_all_things()
         return self.all_things
+    
+    def set_all(self):
+        self.set(self.all())
         
     def current_segments(self):
         """Returns the current segements that animation should be processed on.

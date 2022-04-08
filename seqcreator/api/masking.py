@@ -1,6 +1,6 @@
-from seqcreator.rendering.effects.hue_shift import HueShiftEffect
+from seqcreator.rendering.effects.hue_shift import HueShift as HueShiftEffect
 from seqcreator.rendering.effects.brightness import Brightness as BrightnessEffect 
-from seqcreator.rendering.effects.saturation import SaturationEffect
+from seqcreator.rendering.effects.saturation import Saturation as SaturationEffect
 from seqcreator.rendering.effects_factory import get_effects
 from seqcreator.rendering.functions.functions_store import const_function, linear_function, repeat_function, sin_function
 

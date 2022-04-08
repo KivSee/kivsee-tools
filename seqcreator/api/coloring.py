@@ -2,7 +2,6 @@
 from seqcreator.api.color import Color
 from seqcreator.rendering.effects.const_color import ConstColor
 from seqcreator.rendering.effects.rainbow import Rainbow
-from seqcreator.rendering.effects.hue_shift import HueShift
 from seqcreator.rendering.effects_factory import get_effects
 from seqcreator.rendering.functions.functions_store import *
 

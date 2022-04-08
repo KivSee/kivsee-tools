@@ -17,5 +17,5 @@ class Even(SoundlessAnimation):
         coloring.uniform(color.LIGHT_PURPLE)
         self.elements.set(self.elements.all_odd())
         coloring.uniform(color.LIGHT_TURQUOISE)
-        masking.Brightness(const_function(config.brightness_level))
+        masking.brightness(config.brightness_level)
         
