@@ -1,3 +1,4 @@
+from asyncio.log import logger
 from seqcreator.api.element_provider import get_element_provider
 
 class Effects:
@@ -6,6 +7,7 @@ class Effects:
         self.things_effects = []
 
     def add_effect(self, effect):
+        logger.debug(f"adding effect {effect})")
         current_thing_segments = get_element_provider().current_segments()
         thing_and_effect_json = [(thing_name, effect.to_json(segment_name)) for (thing_name, segment_name) in current_thing_segments]
         self.things_effects.extend(thing_and_effect_json)

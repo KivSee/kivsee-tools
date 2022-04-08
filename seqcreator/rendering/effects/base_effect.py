@@ -16,7 +16,10 @@ class BaseEffect(ABC):
             "effect_config": {
                 "start_time": tf.get_start_time_ms(),
                 "end_time": tf.get_end_time_ms(),
-                "segments": segment_name
+                "segments": segment_name,
+                "repeat_num": tf.repeats,
+                "repeat_start": 0,
+                "repeat_end": 1,
             },
             **params
         }

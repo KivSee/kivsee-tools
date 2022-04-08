@@ -10,8 +10,9 @@ def stop():
     return response
 
 
-def play_song(trigger_name):
+def play_song(trigger_name, start_offset_ms = 0):
     logger.debug("Playing song")
+    # send body  {"start_offset_ms" = start_offset_ms}
     response = requests.post(f"{config.raspberry_pi_addr}:{config.trigger_service_port}/song/{trigger_name}/play")
     logger.info(f"Triggering song {trigger_name} - status code ({response.status_code})")
     return response

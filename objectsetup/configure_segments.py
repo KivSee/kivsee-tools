@@ -40,12 +40,14 @@ def mapping_sequence(segments):
 mapping_trigger_name = "mapping"
 
 def configure(name, thing_segment_mapping):
+    segments_list = thing_segment_mapping["segments"]
+    last_pixel_index = thing_segment_mapping["numberOfPixels"]
+    segments_list.insert(0, {"name": "all","pixels": [dict({"index": n}) for n in range(0, last_pixel_index)]})
     requests.put(f"{config.raspberry_pi_addr}:{config.object_service_port}/thing/{name}", json=thing_segment_mapping)
-    sequence = mapping_sequence(thing_segment_mapping["segments"])
+    sequence = mapping_sequence(segments_list)
     res = requests.put(f"{config.raspberry_pi_addr}:{config.sequence_service_port}/triggers/{mapping_trigger_name}/objects/{name}", json=sequence)
     print(res)
     print("request sent")
-
 
 def run(user):
     if user == "sapir":

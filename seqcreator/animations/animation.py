@@ -7,6 +7,13 @@ from seqcreator.infra.logger import kivsee_logger as logger
 class Animation(ABC):
 
     def __init__(self, trigger, duration, repeats):
+        """_summary_
+
+        Args:
+            trigger (_type_): name of the trigger
+            duration (_type_): length of the animation in miliseconds
+            repeats (_type_): how many times to repeat the animation within the time duration
+        """
         self.trigger_name = trigger
         self.duration = duration
         self.repeats = repeats

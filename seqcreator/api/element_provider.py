@@ -30,6 +30,15 @@ class ElementProvider(ABC):
                             result.append((thing, segment_name))
         return result
 
+    def fetch_all_things(self) -> list:
+        all_segments_json = network_manager.get_all_segments()
+        result = []
+        things = json.loads(all_segments_json)
+        for (thing, body) in things.items():
+            result.append((thing, "all"))
+        print(result)    
+        return result
+
     
     def set(self, tuples):
         """Sets the current segments the animation is processed on.
@@ -39,10 +48,14 @@ class ElementProvider(ABC):
         """
         self.current = tuples
     
-    def set_all(self):
-        """Sets the current segments the animation is be processed on to all available segments.
+    def all(self):
+        """ Returns tuples of things with a segment named "all"
+
+        Returns:
+            tuples (list): list of tuples [(thing_name, "all"), (thing_name, "all") ...]
         """
-        self.set(self.all())
+        self.all_things = self.fetch_all_things()
+        return self.all_things
         
     def current_segments(self):
         """Returns the current segements that animation should be processed on.
@@ -52,7 +65,7 @@ class ElementProvider(ABC):
         """
         return self.current
     
-    def all(self):
+    def get_all_segments(self):
         if len(self.all_segments) == 0:
             self.all_segments = self.fetch_all_tuples()
         return self.all_segments
@@ -63,7 +76,7 @@ class ElementProvider(ABC):
         Returns:
             list: returns a list of tuples [(thing_name, segment_name), (thing_name, segment_name), ...]
         """
-        return self.all()[::2]
+        return self.get_all_segments()[::2]
 
     def all_odd(self):
         """Returns all odd segments
@@ -71,7 +84,7 @@ class ElementProvider(ABC):
         Returns:
             list: returns a list of tuples [(thing_name, segment_name), (thing_name, segment_name), ...]
         """
-        return self.all()[1::2]
+        return self.get_all_segments()[1::2]
 
 _ELEMENTS = None
 
