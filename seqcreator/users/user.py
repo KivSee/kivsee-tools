@@ -16,7 +16,7 @@ class User(ABC):
 
         Args:
             trigger_name (string): the trigger to invoke, either a song or soundless 
-            animation that is implemented by this secuence creator.
+            animation that is implemented by this sequence creator.
         """
 
         logger.debug(f"{self.name}, got request to create {trigger_name} sequence and play it.")

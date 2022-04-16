@@ -10,6 +10,11 @@ from objectsetup.mapping.bigler import curtains
 from objectsetup.mapping.bigler import shelf
 from objectsetup.mapping.bigler import kitchen
 from objectsetup.mapping.bigler import ac_top
+from objectsetup.mapping.bigler import cabbage1
+from objectsetup.mapping.bigler import cabbage2
+from objectsetup.mapping.bigler import star
+from objectsetup.mapping.bigler import gloves
+from objectsetup.mapping.bigler import tv
 import config
 
 def segment_const_color_effect(segment_name, hue):
@@ -65,8 +70,13 @@ def run(user):
         configure("shelf", shelf.val)
         configure("kitchen", kitchen.val)
         configure("ac_top", ac_top.val)
+        configure("cabbage1", cabbage1.val)
+        configure("cabbage2", cabbage2.val)
+        configure("star", star.val)
+        configure("gloves", gloves.val)
+        configure("tv", tv.val)
     else:
         print("User name is not supported")
 
-    # Playng {mapping_trigger_name} sequence
+    # Playing {mapping_trigger_name} sequence
     requests.post(f"{config.raspberry_pi_addr}:{config.trigger_service_port}/trigger/{mapping_trigger_name}")

@@ -9,3 +9,4 @@ class Color:
 LIGHT_PURPLE = Color(0.4)
 LIGHT_TURQUOISE = Color(0.8)
 RED = Color(0.0)
+WHITE = Color(0.0,0.0)

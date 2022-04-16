@@ -1,5 +1,5 @@
 # Instructions
-Create a .env file in the root direcory with the local properties, as described in .env_template then implement the relevant mapping and sequence for your home. 
+Create a .env file in the root directory with the local properties, as described in .env_template then implement the relevant mapping and sequence for your home. 
 
 ## How to run the tool:
 first time run: `pipenv install`
@@ -17,4 +17,4 @@ first time run: `pipenv install`
 
 
 ## Vscode
-Insall the following extenstion: Python, autoDocstring 
+Install the following extensions: Python, autoDocstring 
