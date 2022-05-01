@@ -11,12 +11,13 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Runs animations on objects.')
     parser.add_argument('-m', dest='mode', type=str, help='the mode: seq or map')
     parser.add_argument('-t', dest='trigger', type=str, help='the name of the song or animation to play')
+    parser.add_argument('-o', dest='offset', type=int, default=0, help='song offset in seconds')
     args = parser.parse_args()
     
     user = config.user_name
 
     if args.mode == "seq":
-        print(f"This trigger name is {args.trigger}")
-        sequence_creator.run(user, str(args.trigger))
+        print(f"This trigger name arg is {args.trigger} and offset arg is {args.offset}")
+        sequence_creator.run(user, str(args.trigger), args.offset)
     elif args.mode == "map":
         configure_segments.run(user)

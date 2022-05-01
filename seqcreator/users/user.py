@@ -11,7 +11,7 @@ class User(ABC):
     def __init__(self, name):
         self.name = name
 
-    def play(self, trigger_name) -> bool:
+    def play(self, trigger_name, offset) -> bool:
         """Invoke the requested trigger
 
         Args:
@@ -30,7 +30,7 @@ class User(ABC):
         elif trigger_name == "romantic":
             Romantic().play()
         elif trigger_name == "under":
-            Under().play()
+            Under().play(offset)
         else:
             return False
 
