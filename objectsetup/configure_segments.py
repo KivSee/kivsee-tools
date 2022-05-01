@@ -12,6 +12,11 @@ from objectsetup.mapping.bigler import curtains
 from objectsetup.mapping.bigler import shelf
 from objectsetup.mapping.bigler import kitchen as bigler_kitchen
 from objectsetup.mapping.bigler import ac_top
+from objectsetup.mapping.bigler import cabbage1
+from objectsetup.mapping.bigler import cabbage2
+from objectsetup.mapping.bigler import star
+from objectsetup.mapping.bigler import gloves
+from objectsetup.mapping.bigler import tv
 import config
 
 def segment_const_color_effect(segment_name, hue):

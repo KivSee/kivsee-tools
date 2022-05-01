@@ -1,8 +1,8 @@
 val = {
-        "numberOfPixels": 60,
+        "numberOfPixels": 59,
         "segments": [{
             "name": "all",
-            "pixels": [dict({"index": n}) for n in range(0, 60)]
+            "pixels": [dict({"index": n}) for n in range(0, 59)]
         }
         ]
     }
