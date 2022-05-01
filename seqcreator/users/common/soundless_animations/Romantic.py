@@ -17,10 +17,13 @@ class Romantic(SoundlessAnimation):
     def render_effects(self):
         timing.song_settings(bpm=128, beats_per_episode=32, start_offset=0)
 
-        self.elements.set(self.elements.all())
+        self.elements.set_all()
         timing.beats(0, 64)
-        coloring.rainbow_static(0.9, 1.0)
+        coloring.rainbow_static(0.7, 1.0)
+        # coloring.rainbow(0.7, 1.0)
         logger.info(f"Adjusting brightness level to {config.brightness_level}")
-        masking.brightness(config.brightness_level)
+        timing.cycle(4)
+        masking.brightness_sin(0.3, 0.6, 1)
+        # masking.brightness(config.brightness_level)
         
         

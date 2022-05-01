@@ -12,8 +12,8 @@ class Bigler(User):
         self.elements = Elements(self.name)
         element_provider.set_element_provider(self.elements)
 
-    def play(self, trigger_name):
-        if super().play(trigger_name):
+    def play(self, trigger_name,  offset):
+        if super().play(trigger_name, offset):
            return True
 
         # elif trigger_name == "under":

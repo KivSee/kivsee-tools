@@ -37,7 +37,6 @@ class ElementProvider(ABC):
         things = json.loads(all_segments_json)
         for (thing, body) in things.items():
             result.append((thing, "all"))
-        print(result)    
         return result
 
     

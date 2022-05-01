@@ -10,8 +10,11 @@ from seqcreator.users.sapir.sapir import Sapir
 from seqcreator.users.bigler.bigler import Bigler
 
 
-def run(user, trigger):
-    
+def run(user, trigger,  offset:int=0):
+    if offset is None:
+        offset = 0
+    logger.debug(f"offset value is: {offset}")
+
     # -------------------------------------
     #       User specfic triggering       #
     # -------------------------------------
@@ -32,8 +35,8 @@ def run(user, trigger):
         network_manager.stop()
     else:
         try:
-            logger.info(f"Building and playing {trigger}....")
-            user.play(trigger)
+            logger.info(f"Building and playing {trigger} with offset {offset}....")
+            user.play(trigger, offset)
         except Exception as e:
             logger.error(f"Failure for trigger {trigger}, error msg: {e} ")
             raise e
