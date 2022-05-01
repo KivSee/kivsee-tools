@@ -1,22 +1,6 @@
 import imp
 import os
 import requests
-from objectsetup.mapping.sapir import spiralbig
-from objectsetup.mapping.sapir import spiralsmall
-from objectsetup.mapping.sapir import sofa
-from objectsetup.mapping.sapir import osb
-from objectsetup.mapping.sapir import table
-from objectsetup.mapping.sapir import kitchen as sapir_kitchen
-from objectsetup.mapping.sapir import whisper
-from objectsetup.mapping.bigler import curtains
-from objectsetup.mapping.bigler import shelf
-from objectsetup.mapping.bigler import kitchen as bigler_kitchen
-from objectsetup.mapping.bigler import ac_top
-from objectsetup.mapping.bigler import cabbage1
-from objectsetup.mapping.bigler import cabbage2
-from objectsetup.mapping.bigler import star
-from objectsetup.mapping.bigler import gloves
-from objectsetup.mapping.bigler import tv
 import config
 
 def segment_const_color_effect(segment_name, hue):
@@ -55,7 +39,7 @@ def configure(name, thing_segment_mapping):
     res = requests.put(f"{config.raspberry_pi_addr}:{config.sequence_service_port}/triggers/{mapping_trigger_name}/objects/{name}", json=sequence)
 
 def send_for_user(user):
-    dir = f"objectsetup/mapping/{user}"
+    dir = os.path.join('objectsetup', 'mapping', user)
     list_modules = os.listdir(dir)
     list_modules.remove("__init__.py")
     for module_name in list_modules:
