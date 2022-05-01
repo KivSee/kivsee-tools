@@ -11,7 +11,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Runs animations on objects.')
     parser.add_argument('-m', dest='mode', type=str, help='the mode: seq or map')
     parser.add_argument('-t', dest='trigger', type=str, help='the name of the song or animation to play')
-    parser.add_argument('-o', dest='offset', type=str, help='song offset in beats')
+    parser.add_argument('-o', dest='offset', type=int, default=0, help='song offset in seconds')
     args = parser.parse_args()
     
     user = config.user_name

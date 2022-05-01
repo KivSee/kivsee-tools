@@ -12,7 +12,7 @@ class Bigler(User):
         self.elements = Elements(self.name)
         element_provider.set_element_provider(self.elements)
 
-    def play(self, trigger_name,  offset):
+    def play(self, trigger_name,  offset: int):
         if super().play(trigger_name, offset):
            return True
 

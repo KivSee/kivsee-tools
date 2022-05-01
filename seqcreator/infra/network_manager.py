@@ -12,15 +12,8 @@ def stop():
 
 def play_song(trigger_name, start_offset_ms:int = 0):
     logger.debug("Playing song")
-    # print(f"start_offset_ms {start_offset_ms}")
-    # data = {"start_offset_ms": start_offset_ms}
-    print(type(start_offset_ms))
-    print(start_offset_ms)
     trigger_song_options ={"start_offset_ms": start_offset_ms}
-    # headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
     response = requests.post(f"{config.raspberry_pi_addr}:{config.trigger_service_port}/song/{trigger_name}/play", json=trigger_song_options)
-    # response = requests.post(f"{config.raspberry_pi_addr}:{config.trigger_service_port}/song/{trigger_name}/play",data=trigger_song_options.dumps(data), headers=headers)
-    
     logger.info(f"Triggering song {trigger_name} - status code ({response.status_code})")
     return response
 

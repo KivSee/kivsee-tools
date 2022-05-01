@@ -11,7 +11,7 @@ class User(ABC):
     def __init__(self, name):
         self.name = name
 
-    def play(self, trigger_name, offset:float = 0.0) -> bool:
+    def play(self, trigger_name, offset) -> bool:
         """Invoke the requested trigger
 
         Args:
