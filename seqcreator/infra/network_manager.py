@@ -18,9 +18,10 @@ def play_song(trigger_name, start_offset_ms:int = 0):
     return response
 
 
-def play_soundless_animation(trigger_name):
+def play_soundless_animation(trigger_name, start_offset_ms:int = 0):
     logger.debug("Playing animation")
-    response = requests.post(f"{config.raspberry_pi_addr}:{config.trigger_service_port}/trigger/{trigger_name}")
+    trigger_animation_options = {"start_offset_ms": start_offset_ms}
+    response = requests.post(f"{config.raspberry_pi_addr}:{config.trigger_service_port}/trigger/{trigger_name}", json=trigger_animation_options)
     logger.info(f"Triggering animation {trigger_name} - status code ({response.status_code})")
     return response
 
