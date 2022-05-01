@@ -2,7 +2,6 @@ from abc import abstractmethod
 from seqcreator.animations.animation import Animation
 from seqcreator.infra import network_manager
 from seqcreator.infra.logger import kivsee_logger as logger
-from seqcreator.api import timing
 
 class Song(Animation):
 
