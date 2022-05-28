@@ -56,6 +56,8 @@ class ElementProvider(ABC):
         """
         if len(self.all_things) == 0:
             self.all_things = self.fetch_all_things()
+        print("self.all_things")
+        print(self.all_things)
         return self.all_things
     
     def set_all(self):
@@ -71,7 +73,9 @@ class ElementProvider(ABC):
     
     def get_all_segments(self):
         if len(self.all_segments) == 0:
-            self.all_segments = self.fetch_all_tuples()
+            self.all_segments = list(filter(lambda t: t[1] != "all" , self.fetch_all_tuples()))
+        print("************* ")
+        print(self.all_segments)
         return self.all_segments
 
     def all_even(self):
@@ -80,6 +84,7 @@ class ElementProvider(ABC):
         Returns:
             list: returns a list of tuples [(thing_name, segment_name), (thing_name, segment_name), ...]
         """
+        print("************* even")
         return self.get_all_segments()[::2]
 
     def all_odd(self):
@@ -88,6 +93,7 @@ class ElementProvider(ABC):
         Returns:
             list: returns a list of tuples [(thing_name, segment_name), (thing_name, segment_name), ...]
         """
+        print("************* odd")
         return self.get_all_segments()[1::2]
 
 _ELEMENTS = None

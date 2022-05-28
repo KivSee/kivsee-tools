@@ -3,6 +3,7 @@ from seqcreator.users.common.songs.under import Under
 from seqcreator.users.common.soundless_animations.romantic import Romantic
 from seqcreator.users.common.soundless_animations.even import Even
 from seqcreator.users.common.soundless_animations.party import Party
+from seqcreator.users.common.soundless_animations.snake import Snake
 from seqcreator.users.common.soundless_animations.warm import Warm
 from seqcreator.infra.logger import kivsee_logger as logger
 
@@ -31,6 +32,8 @@ class User(ABC):
             Romantic().play()
         elif trigger_name == "under":
             Under().play(offset)
+        elif trigger_name == "snake":
+            Snake().play()
         else:
             return False
 

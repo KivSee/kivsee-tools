@@ -18,3 +18,4 @@ class Party(SoundlessAnimation):
         timing.beats(0, 128)
         coloring.rainbow(speed=6)
         masking.brightness(0.8)
+        masking.snake_bidrectional()

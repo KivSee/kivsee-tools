@@ -1,9 +1,22 @@
 from seqcreator.rendering.effects.hue_shift import HueShift as HueShiftEffect
 from seqcreator.rendering.effects.brightness import Brightness as BrightnessEffect 
 from seqcreator.rendering.effects.saturation import Saturation as SaturationEffect
+from seqcreator.rendering.effects.snake import SnakeEffect
 from seqcreator.rendering.effects_factory import get_effects
 from seqcreator.rendering.functions.functions_store import const_function, linear_function, repeat_function, sin_function
 
+# Snake effect:
+def snake():
+    get_effects().add_effect(SnakeEffect(linear_function(0, 2), const_function(1)))
+
+def snake_bidrectional():
+    get_effects().add_effect(SnakeEffect(sin_function(0, 1, -0.25, 1), const_function(1)))
+
+def snake_backward():
+    get_effects().add_effect(SnakeEffect(linear_function(2, 0), const_function(1)))
+
+# def snake_custom(head: int, tail_length, direction):
+#     get_effects().add_effect(SnakeEffect(linear_function(0, 2), const_function(1)))
 
 # Hue modifications:
 
