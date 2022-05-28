@@ -16,23 +16,21 @@ class Snake(SoundlessAnimation):
         # self.elements.set([("snake_test", "all")])
         self.elements.set(self.elements.get_all_segments())
         timing.beats(0, 3)
-        coloring.uniform(color.LIGHT_PURPLE)
+        coloring.rainbow_static(0.74, 0.84)
         masking.snake()
         masking.brightness(config.brightness_level)
 
         self.elements.set(self.elements.get_all_segments())
         timing.beats(3, 6)
-        coloring.uniform(color.ORANGE)
+        coloring.rainbow_static(0.0, 0.16)
         masking.snake_backward()
         masking.brightness(config.brightness_level)
 
         self.elements.set(self.elements.get_all_segments())
         timing.beats(6, 9)
-        coloring.uniform(color.RED)
+        coloring.rainbow_static(0.32, 0.5)
         masking.snake_bidrectional()
         masking.brightness(config.brightness_level)
-
-
 
         # timing.beats(3, 6)
         # coloring.uniform(color.LIGHT_PURPLE)
