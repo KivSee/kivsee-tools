@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from seqcreator.users.common.songs.nyan import Nyan
 from seqcreator.users.common.songs.under import Under
 from seqcreator.users.common.soundless_animations.romantic import Romantic
 from seqcreator.users.common.soundless_animations.even import Even
@@ -34,6 +35,8 @@ class User(ABC):
             Under().play(offset)
         elif trigger_name == "snake":
             Snake().play()
+        elif trigger_name == "nyan":
+            Nyan().play(offset)
         else:
             return False
 

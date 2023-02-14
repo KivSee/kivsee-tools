@@ -3,6 +3,7 @@ from seqcreator.infra import network_manager
 from seqcreator.users.amir.amir import Amir
 from seqcreator.users.sapir.sapir import Sapir
 from seqcreator.users.bigler.bigler import Bigler
+from seqcreator.users.peacock.peacock import Peacock
 
 def run(user, trigger,  offset: int):
     
@@ -17,6 +18,9 @@ def run(user, trigger,  offset: int):
         pass
     elif user == "sapir":
         user = Sapir()
+        pass
+    elif user == "peacock":
+        user = Peacock()
         pass
     else:
         e = f"User {user} does not exists. Make sure it was defined in a .env file."
