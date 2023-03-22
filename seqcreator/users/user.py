@@ -7,6 +7,7 @@ from seqcreator.users.common.soundless_animations.party import Party
 from seqcreator.users.common.soundless_animations.snake import Snake
 from seqcreator.users.common.soundless_animations.warm import Warm
 from seqcreator.infra.logger import kivsee_logger as logger
+from seqcreator.users.peacock.soundless_animations.purim import Purim
 
 class User(ABC):
 
@@ -37,6 +38,8 @@ class User(ABC):
             Snake().play()
         elif trigger_name == "nyan":
             Nyan().play(offset)
+        elif trigger_name == "purim":
+            Purim().play(offset)
         else:
             return False
 
