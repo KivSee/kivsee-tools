@@ -5,7 +5,7 @@ Create a .env file in the root directory with the local properties, as described
 first time run: `pipenv install`
 
 ### Segments mapping
-`pipenv run python main.py -m map`
+`pipenv run python main.py -m map`\
 
 ### Sequence creator
 #### Trigger a song

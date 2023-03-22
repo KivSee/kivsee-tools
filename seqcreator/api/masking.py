@@ -20,6 +20,9 @@ def snake_backward():
 
 # Hue modifications:
 
+def hue_shift_const(offset):
+    get_effects().add_effect(HueShiftEffect(const_function(offset)))
+
 def hue_shift(offset_factor):
     get_effects().add_effect(HueShiftEffect(linear_function(0, offset_factor)))
 
