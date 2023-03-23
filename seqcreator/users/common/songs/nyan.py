@@ -70,7 +70,7 @@ class Nyan(Song):
         [hue1, hue2] = self.get_hues()        
         timing.episodes(start_ep, end_ep)
         get_random_coloring(self.elements, {'hue': hue1, 'hue2': hue2, 'intensity': 0.25})
-        for e in range (start_ep, end_ep, 4):        
-            timing.episodes(e, e+4)
+        for e in range (start_ep, end_ep, 1):        
+            timing.episodes(e, e+1)
             get_random_masking(self.elements, {})        
 

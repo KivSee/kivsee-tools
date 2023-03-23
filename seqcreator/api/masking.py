@@ -7,13 +7,13 @@ from seqcreator.rendering.functions.functions_store import const_function, linea
 
 # Snake effect:
 def snake():
-    get_effects().add_effect(SnakeEffect(linear_function(0, 2), const_function(1)))
+    get_effects().add_effect(SnakeEffect(linear_function(0, 2), const_function(1), True))
 
 def snake_bidrectional():
-    get_effects().add_effect(SnakeEffect(sin_function(0, 1, -0.25, 1), const_function(1)))
+    get_effects().add_effect(SnakeEffect(sin_function(0, 1, -0.25, 1), const_function(1), True))
 
 def snake_backward():
-    get_effects().add_effect(SnakeEffect(linear_function(2, 0), const_function(1)))
+    get_effects().add_effect(SnakeEffect(linear_function(2, 0), const_function(1), True))
 
 # def snake_custom(head: int, tail_length, direction):
 #     get_effects().add_effect(SnakeEffect(linear_function(0, 2), const_function(1)))
