@@ -3,6 +3,7 @@ from seqcreator.api import masking
 
 
 from seqcreator.api import timing
+from seqcreator.api.context import get_energy, use_energy
 from seqcreator.rendering.effects.hue_shift import HueShift
 from seqcreator.rendering.effects.snake import SnakeEffect
 from seqcreator.rendering.effects_factory import get_effects
@@ -86,7 +87,7 @@ def hue_shift_group(elements, options):
     get_effects().add_effect(HueShift(half_function(const_function(0.2), const_function(0.0))))
 
 def snake(elements, options):
-    energy = options.get("energy", random.random())
+    energy = get_energy()
     density = options.get("density", random.random())
     int_energy = int(energy * 4)
     snake_length = density * 1.9 + 0.1
@@ -97,17 +98,17 @@ def snake(elements, options):
 def moving_shadow(elements, options):
     options = options.copy()
     options["density"] = 1.0
-    options["energy"] = 0.5
-    snake(elements, options)
+    with use_energy(0.5):
+        snake(elements, options)
 
 def party_snake(elements, options):
     options = options.copy()
     options["density"] = 0.01
-    options["energy"] = 0.5
-    snake(elements, options)
+    with use_energy(0.5):
+        snake(elements, options)
 
 def confetti(elements, options):
-    energy = options.get("energy", random.random())
+    energy = get_energy()
     density = options.get("density", random.random())
     snake_length = density * 0.8 + 0.2
     timing.cycle((1.0 - energy) * 3.5 + 0.5)
@@ -116,15 +117,15 @@ def confetti(elements, options):
 
 def conffetti_party(elements, options):
     options = options.copy()
-    options["energy"] = 0.85
     options["density"] = 0.75
-    confetti(elements, options)
+    with use_energy(0.85):
+        confetti(elements, options)
 
 def conffetti_chill(elements, options):
     options = options.copy()
-    options["energy"] = 0.01
     options["density"] = 1.0
-    confetti(elements, options)
+    with use_energy(0.01):
+        confetti(elements, options)
 
 def snake_grow_shrink(elements, options):
     timing.cycle(4)
