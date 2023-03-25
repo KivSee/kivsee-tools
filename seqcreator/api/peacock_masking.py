@@ -3,7 +3,7 @@ from seqcreator.api import masking
 
 
 from seqcreator.api import timing
-from seqcreator.api.context import get_energy, use_energy
+from seqcreator.api.context.energy import get_energy, use_energy
 from seqcreator.rendering.effects.hue_shift import HueShift
 from seqcreator.rendering.effects.snake import SnakeEffect
 from seqcreator.rendering.effects_factory import get_effects
