@@ -38,5 +38,9 @@ def rainbow(elements):
     get_effects().add_effect(Rainbow(const_function(primary_hue), const_function(primary_hue + hue_shift)))
 
 def get_random_coloring(elements):
-    col = random.choice([uniform, gradient, rainbow])
+    energy = get_energy(0.5)
+    uniform_wieght = 1.0 - abs(0.0 - energy)
+    gradient_wieght = 1.0 - abs(0.5 - energy)
+    rainbow_wieght = 1.0 - abs(1.0 - energy)
+    col = random.choices([uniform, gradient, rainbow], [uniform_wieght, gradient_wieght, rainbow_wieght])[0]
     col(elements)
