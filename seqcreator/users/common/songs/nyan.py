@@ -1,10 +1,8 @@
 import config
 from seqcreator.animations.song import Song
 from seqcreator.api import timing, coloring, masking, element_provider, color
-from seqcreator.api.context import get_energy, set_energy, use_energy
 from seqcreator.api.peacock_coloring import get_random_coloring
 from seqcreator.api.peacock_masking import get_random_masking
-from seqcreator.rendering.functions.functions_store import const_function
 
 import random
 
