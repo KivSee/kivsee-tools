@@ -26,8 +26,10 @@ def gradient(elements):
         # hue shift based on the energy.
         # not too much though, we want it gradient and not rainbow
         energy = get_energy(0.5)
-        hue_shift = energy / 2 # max hue shift is 0.5 for full energy
-        secondary_hue = primary_hue + hue_shift
+        hue_shift = energy / 3 # max hue shift is 0.33 for full energy
+        orig_primary_hue = primary_hue
+        primary_hue = orig_primary_hue - hue_shift / 2
+        secondary_hue = orig_primary_hue + hue_shift / 2
     get_effects().add_effect(Rainbow(const_function(primary_hue), const_function(secondary_hue)))
 
 def rainbow(elements):

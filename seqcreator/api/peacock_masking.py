@@ -18,6 +18,9 @@ all_elements_a2 = [("peacock1", "all_a2")]
 group_1 = [("peacock1", "wing_l"), ("peacock1", "wing_r")]
 group_2 = [("peacock1", "body"), ("peacock1", "tail"), ("peacock1", "head")]
 
+def brightness_const(brightness):
+    get_effects().add_effect(BrightnessEffect(const_function(brightness)))
+
 def brightness_sin(elements, options):
     timing.cycle(1)
     elements.set(all_elements)
@@ -42,7 +45,22 @@ def sin_group(elements, options):
     elements.set(group_2)
     get_effects().add_effect(BrightnessEffect(sin_function(
         0.2, 1.0, 0, 1)))
-    
+
+def fade_out_steps(elements, options):
+    elements.set(all_elements)
+    get_effects().add_effect(BrightnessEffect(steps_function(4, -0.25, 0.75)))
+
+def fade_out(elements, options):
+    elements.set(all_elements)
+    get_effects().add_effect(BrightnessEffect(linear_function(1.0, 0.0)))
+
+def dark(elements, options):
+    get_effects().add_effect(BrightnessEffect(const_function(0.0)))
+
+def blink_all(elements, options):
+    elements.set(all_elements)
+    get_effects().add_effect(BrightnessEffect(half_function(const_function(0.0), const_function(1.0))))
+
 def blink_group(elements, options):
     timing.cycle(2)
     elements.set(group_1)
@@ -68,6 +86,9 @@ def alternate_sin(elements, options):
     get_effects().add_effect(BrightnessEffect(sin_function(0.1, 1.0, 0, 1)))
     elements.set(all_elements_a2)
     get_effects().add_effect(BrightnessEffect(sin_function(0.1, 1.0, 0.25, 1)))
+
+def hue_shift_const(hue_shift):
+    get_effects().add_effect(HueShift(const_function(hue_shift)))
 
 def hue_shift_sin(elements, options):
     timing.cycle(2)

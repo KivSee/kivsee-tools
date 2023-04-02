@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from seqcreator.users.common.songs.nyan import Nyan
+from seqcreator.users.common.songs.peacock import Peacock
 from seqcreator.users.common.songs.under import Under
 from seqcreator.users.common.soundless_animations.romantic import Romantic
 from seqcreator.users.common.soundless_animations.even import Even
@@ -40,6 +41,8 @@ class User(ABC):
             Nyan().play(offset)
         elif trigger_name == "purim":
             Purim().play(offset)
+        elif trigger_name == "peacock":
+            Peacock().play(offset)
         else:
             return False
 
