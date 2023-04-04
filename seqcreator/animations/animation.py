@@ -38,3 +38,6 @@ class Animation(ABC):
     def play(self):
         """ Triggers the animation, either for sound or soundless animation.
         """
+
+    def load(self):
+        pass
