@@ -33,15 +33,16 @@ segments = [
         "name": "neck",
         "indices": list(range(399, 436)) + list(range(447, 499)),
     },
+    {
+        "name": "all",
+        "indices": range(0, total_pixels),
+    }
 ]
 
 segments_config = [segments_defs(s) for s in segments]
-[alternate1, alternate2] = get_alternate(range(0, total_pixels), "all", 4)
 flatten = [item for sublist in segments_config for item in sublist]
-flatten.extend([alternate1, alternate2])
-flatten.append(get_random(range(0, total_pixels), "all"))
 
 val = {
-        "numberOfPixels": 593,
+        "numberOfPixels": total_pixels,
         "segments": flatten
     }

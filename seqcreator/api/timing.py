@@ -123,8 +123,7 @@ tf_global = None
 
 def get_timing() -> TimeFrame:
     global tf_global
-    return tf_global.copy()
-
+    return tf_global.copy() if tf_global else None
 
 def set_timing(src_tf: TimeFrame):
     global tf_global
