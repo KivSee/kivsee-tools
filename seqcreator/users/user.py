@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from seqcreator.users.common.songs.nyan import Nyan
+from seqcreator.users.common.songs.overthinker import OverThinker
 from seqcreator.users.common.songs.peacock import Peacock
 from seqcreator.users.common.songs.req import Req
 from seqcreator.users.common.songs.under import Under
@@ -21,7 +22,8 @@ triggersToClasses = {
     "nyan": Nyan,
     "peacock": Peacock,
     "purim": Purim,
-    "req": Req
+    "req": Req,
+    "over": OverThinker
 }
 
 class User(ABC):
