@@ -1,12 +1,9 @@
 from abc import ABC, abstractmethod
 from seqcreator.users.common.songs.nyan import Nyan
-<<<<<<< HEAD
 from seqcreator.users.common.songs.sandstorm import Sandstorm
-=======
 from seqcreator.users.common.songs.overthinker import OverThinker
 from seqcreator.users.common.songs.peacock import Peacock
 from seqcreator.users.common.songs.req import Req
->>>>>>> ce8c00eada70dd20e1c0a0cbed7ead7f6eb37ade
 from seqcreator.users.common.songs.under import Under
 from seqcreator.users.common.soundless_animations.romantic import Romantic
 from seqcreator.users.common.soundless_animations.even import Even
@@ -27,7 +24,8 @@ triggersToClasses = {
     "peacock": Peacock,
     "purim": Purim,
     "req": Req,
-    "over": OverThinker
+    "over": OverThinker,
+    "sandstorm": Sandstorm
 }
 
 class User(ABC):
@@ -45,30 +43,8 @@ class User(ABC):
 
         logger.debug(f"{self.name}, got request to create {trigger_name} sequence and play it.")
 
-<<<<<<< HEAD
-        if trigger_name == "warm":
-            Warm().play()
-        elif trigger_name == "party":
-            Party().play()
-        elif trigger_name == "even":
-            Even().play()
-        elif trigger_name == "romantic":
-            Romantic().play()
-        elif trigger_name == "under":
-            Under().play(offset)
-        elif trigger_name == "snake":
-            Snake().play()
-        elif trigger_name == "nyan":
-            Nyan().play(offset)
-        elif trigger_name == "sandstorm":
-            Sandstorm().play(offset)
-        elif trigger_name == "purim":
-            Purim().play(offset)
-        else:
-=======
         trigger_class = triggersToClasses.get(trigger_name)
         if not trigger_class:
->>>>>>> ce8c00eada70dd20e1c0a0cbed7ead7f6eb37ade
             return False
         
         trigger_instance = trigger_class()

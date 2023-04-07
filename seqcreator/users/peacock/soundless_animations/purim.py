@@ -101,7 +101,7 @@ class Purim(SoundlessAnimation):
         random_effect()
 
     def set_4episodes_coloring(self, e: int):
-        timing.episodes(e, e + 4)
+        self.in_episodes(e, e + 4)
         self.apply_random_coloring()
 
     def set_effect(self, e: int):

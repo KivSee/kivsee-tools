@@ -68,24 +68,24 @@ class Nyan(Song):
             self.end_last_section(51)
 
     def end_section(self, end_ep):
-        timing.episodes(end_ep - 1.0, end_ep - 0.5)
+        self.in_episodes(end_ep - 1.0, end_ep - 0.5)
         fade_out(self.elements, {})
-        timing.episodes(end_ep - 0.5, end_ep)
+        self.in_episodes(end_ep - 0.5, end_ep)
         timing.cycle(0.125)
         blink_all(self.elements, {})
 
     def end_last_section(self, end_ep):
-        timing.episodes(end_ep - 0.5, end_ep)
+        self.in_episodes(end_ep - 0.5, end_ep)
         fade_out_steps(self.elements, {})
 
     def color_section(self, start_ep, end_ep):
-        timing.episodes(start_ep, end_ep)
+        self.in_episodes(start_ep, end_ep)
         for e in range (start_ep, end_ep, 1):        
-            timing.episodes(e, e+1)
+            self.in_episodes(e, e+1)
             get_random_masking(self.elements, {})
 
     def section_coloring(self, coloring_func, start_ep, end_ep):
-        timing.episodes(start_ep, end_ep)
+        self.in_episodes(start_ep, end_ep)
         coloring_func(self.elements)
 
     def intro_single_sequence(self, episode, start_beat):
@@ -109,7 +109,7 @@ class Nyan(Song):
 
     def intro(self, episode):
         g1, g2 = random.choice([[[all_a1], [all_a2]], [[wing_l, wing_r], [body, tail, head]]])
-        timing.episodes(episode, episode + 0.5)
+        self.in_episodes(episode, episode + 0.5)
         self.elements.set(g1)
         dark(self.elements, {})
 
