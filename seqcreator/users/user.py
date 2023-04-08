@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from seqcreator.users.common.songs.nyan import Nyan
+from seqcreator.users.common.songs.sandstorm import Sandstorm
 from seqcreator.users.common.songs.overthinker import OverThinker
 from seqcreator.users.common.songs.peacock import Peacock
 from seqcreator.users.common.songs.req import Req
@@ -23,7 +24,8 @@ triggersToClasses = {
     "peacock": Peacock,
     "purim": Purim,
     "req": Req,
-    "over": OverThinker
+    "over": OverThinker,
+    "sandstorm": Sandstorm
 }
 
 class User(ABC):
