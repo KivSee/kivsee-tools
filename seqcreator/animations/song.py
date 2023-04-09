@@ -22,6 +22,14 @@ class Song(Animation):
         logger.info(f"playing {self.trigger_name}")
         network_manager.play_song(self.trigger_name, offset*1000)
 
+    def in_seconds(self, start_seconds, end_seconds):
+        timing.set_timing(timing.KivseeTimeFrame(start_seconds * 1000, end_seconds * 1000, end_seconds - start_seconds))
+
+    def in_minutes_seconds(self, start_minute, start_second, end_minute, end_second):
+        start_second = (start_minute * 60 + start_second)
+        end_second = (end_minute * 60 + end_second)
+        self.in_seconds(start_second, end_second)
+
     def in_beats(self, start_beat, end_beat):
         start_section, start_beat_in_section = self._find_beat_section(start_beat)
         end_section, end_beat_in_section = self._find_beat_section(end_beat - 1)
@@ -37,7 +45,11 @@ class Song(Animation):
 
         # find the sections for each episode
         start_section, start_episode_section_index = self._find_episode_section(start_episode)
+        if start_section is None:
+            raise Exception(f"Start episode not found in bpm sections")
         end_section, end_episode_section_index = self._find_episode_section(end_episode - 1)
+        if start_section is None:
+            raise Exception(f"End episode not found in bpm sections")
         same_section = start_section == end_section
         num_beats = (end_episode - start_episode) * start_section["beatsPerEpisode"] if same_section else None
 
