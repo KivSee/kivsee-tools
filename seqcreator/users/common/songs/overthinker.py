@@ -83,15 +83,16 @@ class OverThinker(Song):
         get_effects().add_effect(BrightnessEffect(const_function(0.3)))
         self.with_cycle(8)
         get_effects().add_effect(BrightnessEffect(sin_start_max(0.5, 1.0)))
-        # self.with_cycle(0.125, 0, 0.0625)
-        # get_effects().add_effect(BrightnessEffect(const_function(0.9)))
 
         # intro, at episode 5 add small sounds
         self.in_episodes(5, 9)
         self.elements.set([("peacock1", "all")])
         self.with_cycle(16, 0.5, 1.5)
         get_effects().add_effect(SnakeEffect(linear_function(0, 2), const_function(1), True))
-        # get_effects().add_effect(BrightnessEffect(sin_start_max(0.2, 1.0)))
+        self.with_cycle(8, 1, 4)
+        get_effects().add_effect(BrightnessEffect(repeat_function(3, linear_function(1.2, 1.0))))
+        self.with_cycle(8, 5, 8)
+        get_effects().add_effect(BrightnessEffect(repeat_function(3, linear_function(1.2, 1.0))))
         
         # brightness increase slightly epi 9-11
         self.in_episodes(9, 11)
@@ -139,14 +140,6 @@ class OverThinker(Song):
         get_effects().add_effect(SnakeEffect(steps_from_to(3, 0, 1), const_function(0.75), True))
 
         # episode 13, beats 104-112
-        # TODO consider what to do with this
-        # self.in_beats(105.5, 108.5)
-        # self.with_cycle(1)
-        # get_effects().add_effect(BrightnessEffect(sin_start_max(0.5, 1.0)))
-        # self.in_beats(109.5, 110.5)
-        # self.with_cycle(1)
-        # get_effects().add_effect(BrightnessEffect(sin_start_max(0.5, 1.0)))
-
         # episode 13, last beat magic sound
         self.in_beats(111, 112)
         self.elements.set([("peacock1", "all")])
@@ -177,13 +170,14 @@ class OverThinker(Song):
         self.elements.set(all)
         self.with_cycle(1/3)
         get_effects().add_effect(SnakeEffect(linear_function(0, 1), const_function(1), True))
-
+        self.in_beats(132,133)
+        self.with_cycle(1/16, 0, 1/32)
+        get_effects().add_effect(BrightnessEffect(const_function(0.5)))
         self.in_beats(133,134.66)
-        self.with_cycle(0.33)
-        self.elements.set([("peacock1", "all")])
+        self.with_cycle(1/3)
         get_effects().add_effect(BrightnessEffect(sin_start_max(0.5, 1.0)))
         self.in_beats(134.66,135)
-        self.with_cycle(0.0833)
+        self.with_cycle(1/12)
         get_effects().add_effect(BrightnessEffect(sin_start_max(0.5, 1.0)))
 
         # Hue shift for section 13-17 at end of section so to take on all things done in section
@@ -220,6 +214,7 @@ class OverThinker(Song):
         self.elements.set([("peacock1", "all")])
         get_effects().add_effect(SnakeEffect(linear_function(0, 2), const_function(0.75), True))
 
+        # episode 18 beats 144-152
         # episode 18 beat 2 and 6 jingle sound
         self.in_episode(18)
         self.with_cycle(4, 1, 2)
@@ -236,8 +231,10 @@ class OverThinker(Song):
         self.in_beats(147,148)
         self.elements.set([("peacock1", "all")])
         get_effects().add_effect(Saturation(linear_function(1, 0.5)))
+        self.in_beats(148,149)
+        get_effects().add_effect(BrightnessEffect(linear_function(0.4, 1.0)))
 
-        # episode 18 beat 7 fast beats
+        # episode 18 beat 7, fast beats
         self.in_beats(150,151)
         self.elements.set(all)
         self.with_cycle(1/6)
@@ -261,7 +258,7 @@ class OverThinker(Song):
         # episode 19 beat 4 snake steps
         self.in_beats(155, 156)
         self.elements.set([("peacock1", "all_r")])
-        get_effects().add_effect(SnakeEffect(const_function(1), steps_from_to(3,1.5,0.5), True))
+        get_effects().add_effect(SnakeEffect(steps_from_to(3,1.5,0.5), const_function(1), True))
 
         # episode 19 beat 7 woo woo snakes
         self.in_beats(158,159)
@@ -276,12 +273,12 @@ class OverThinker(Song):
         get_effects().add_effect(SnakeEffect(linear_function(0, 1), const_function(1), True))
         
         # episode 20 beats 6-7
-        self.in_beats(165,136.66)
+        self.in_beats(165,166.66)
         self.with_cycle(0.33)
         self.elements.set([("peacock1", "all")])
         get_effects().add_effect(BrightnessEffect(sin_start_max(0.5, 1.0)))
-        self.in_beats(136.66,137)
-        self.with_cycle(0.0833)
+        self.in_beats(166.66,167)
+        self.with_cycle(1/12)
         get_effects().add_effect(BrightnessEffect(sin_start_max(0.5, 1.0)))
 
 
@@ -313,16 +310,19 @@ class OverThinker(Song):
         self.elements.set([("peacock1", "all")])
         get_effects().add_effect(HueShift(steps_function(8, 0.1, 0.0625)))
         get_effects().add_effect(BrightnessEffect(const_function(0.3)))
-        # self.with_cycle(0.125, 0, 0.0625)
-        # get_effects().add_effect(BrightnessEffect(const_function(0.9)))
         self.elements.set(all)
         self.with_cycle(8)
         get_effects().add_effect(SnakeEffect(linear_function(0, 1), const_function(1.5), True))
 
+        # episode 26-27 slow fade in-out
+        self.in_episodes(26, 27.5)
+        self.elements.set(all)
+        get_effects().add_effect(BrightnessEffect(sin_start_min(1.0, 2.0)))
+
         # episode 26 talking - this is a disaster
         self.in_beats(213.5, 214.5)
         self.elements.set(all)
-        self.with_cycle(1/4, 0, 1/8)
+        self.with_cycle(1/8, 0, 1/16)
         get_effects().add_effect(BrightnessEffect(const_function(0.5)))
 
         #episode 29 talking - time to wake up
@@ -424,15 +424,20 @@ class OverThinker(Song):
         get_effects().add_effect(BrightnessEffect(const_function(0)))
 
         # episode 36, beats 288-296
-        # episode 15, beats 120-128, second half fast repeats
-        # self.in_beats(124.66,127)
-        # self.elements.set(all)
-        # get_effects().add_effect(Rainbow(const_function(0.2), const_function(0.4)))
-        # get_effects().add_effect(SnakeEffect(steps_from_to(7,0,1,True), const_function(4), False))
-        
-        # self.in_beats(127, 128)
-        # self.elements.set([("peacock1", "all")])
-        # get_effects().add_effect(SnakeEffect(linear_function(0, 1), const_function(1), True))
+        self.in_beats(289,290)
+        self.elements.set(all)
+        get_effects().add_effect(BrightnessEffect(sin_start_max(0.5, 1.0)))
+
+        self.in_beats(290,291.5)
+        self.elements.set(all)
+        self.with_cycle(1/2)
+        get_effects().add_effect(SnakeEffect(linear_function(0, 1), const_function(1), True))
+
+        self.in_beats(295,296)
+        self.elements.set(all)
+        get_effects().add_effect(ConstColor(Color(1.0, 1.0, 1.0)))
+        get_effects().add_effect(Saturation(const_function(0.5)))
+        get_effects().add_effect(BrightnessEffect(linear_function(1.0, 0.5)))
 
         # episode 37, beats 296-304
         # beats 3-4, snakes on 1/3
@@ -545,7 +550,7 @@ class OverThinker(Song):
         self.elements.set([("peacock1", "all")])
         get_effects().add_effect(BrightnessEffect(sin_start_max(0.5, 1.0)))
         self.in_beats(334.66,335)
-        self.with_cycle(0.0833)
+        self.with_cycle(1/12)
         get_effects().add_effect(BrightnessEffect(sin_start_max(0.5, 1.0)))
 
 
@@ -556,10 +561,10 @@ class OverThinker(Song):
 
 ####### START NEW CHILL SECTION #######
         # episode 42 chill
-        self.in_episodes(42, 50)
-        self.elements.set(all_s)
-        get_effects().add_effect(Rainbow(const_function(0), const_function(1)))
         self.in_episodes(42, 46)
+        self.elements.set([("peacock1", "all_r")])
+        get_effects().add_effect(Rainbow(const_function(0.2), const_function(0.7)))
+        get_effects().add_effect(SnakeEffect(linear_function(2.5,1.0),const_function(0.75), True))
         get_effects().add_effect(HueShift(steps_function(4, 0.1, 0.0625)))
         get_effects().add_effect(BrightnessEffect(const_function(0.25)))
 
@@ -594,17 +599,25 @@ class OverThinker(Song):
         get_effects().add_effect(BrightnessEffect(const_function(3.0)))
 
         # episode 46-48 fade out
-        self.in_episodes(46, 48)
-        self.elements.set([("peacock1", "all")])
+        self.in_episodes(46, 47)
+        self.elements.set([("peacock1", "all_d")])
+        get_effects().add_effect(Rainbow(const_function(0), const_function(1)))
         get_effects().add_effect(HueShift(steps_function(1, 0.1, 0.0625)))
         get_effects().add_effect(BrightnessEffect(linear_function(0.9, 0.1)))
         get_effects().add_effect(Saturation(linear_function(1.0, 0.2)))
 
-        # episode 48-50 fade in to creshendo cut off
-        self.in_episode(48)
+        # episode 47-49 fade in to creshendo cut off
+        self.in_episodes(47, 49)
+        self.elements.set(all_s)
+        get_effects().add_effect(Rainbow(const_function(0), const_function(1)))
+        get_effects().add_effect(SnakeEffect(linear_function(0.0,1.0),const_function(1.0), False))
         get_effects().add_effect(HueShift(steps_function(1, 0.1, 0.0625)))
         get_effects().add_effect(BrightnessEffect(linear_function(0.1, 0.3)))
-        get_effects().add_effect(Saturation(linear_function(0.2, 0.5)))
+        get_effects().add_effect(Saturation(linear_function(0.2, 1.0)))
+
         self.in_episode(49)
+        self.elements.set(all_s)
+        get_effects().add_effect(Rainbow(const_function(0), const_function(1)))
+        get_effects().add_effect(SnakeEffect(linear_function(1.0,2.0),const_function(1.0), True))
         get_effects().add_effect(BrightnessEffect(linear_function(0.3, 1.0)))
-        get_effects().add_effect(Saturation(linear_function(0.5, 1.0)))
+        get_effects().add_effect(Saturation(linear_function(1.0, 0.2)))
