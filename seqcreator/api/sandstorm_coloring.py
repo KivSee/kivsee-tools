@@ -15,6 +15,7 @@ def uniform(elements, options):
     #elements.set(all_elements)
     hue = getattr(options, 'hue', random.random())
     get_effects().add_effect(ConstColor(Color(hue, 1.0, 1.0)))
+    return hue
 
 def gradient(elements, options):
     #elements.set(as_symmetric(all_elements_single))
@@ -26,7 +27,7 @@ def gradient(elements, options):
 def rainbow(elements, options):
     #elements.set(as_symmetric(all_elements_single))
     hue = options.get('hue', random.random())
-    intensity = options.get('intensity', 0.25)
+    intensity = options.get('intensity', 0.5)
     hue_shift = intensity * 8
     get_effects().add_effect(Rainbow(const_function(hue), const_function(hue + hue_shift)))
 
