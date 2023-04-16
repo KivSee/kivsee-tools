@@ -2,7 +2,7 @@ import random
 
 from objectsetup.mapping.utils import get_alternate, get_random, segments_defs
 
-total_pixels = 593
+total_pixels = 590
 
 segments = [
     {
@@ -11,23 +11,23 @@ segments = [
     },
     {
         "name": "tail",
-        "indices": range(197, 304),
+        "indices": range(197, 301),
     },
     {
         "name": "wing_r",
-        "indices": range(304, 399)[::-1],
+        "indices": range(301, 396),
     },
     {
         "name": "head",
-        "indices": range(399, 499),
+        "indices": range(396, 496),
     },
     {
         "name": "wing_l",
-        "indices": range(499, 593),
+        "indices": range(496, 590),
     },
     {
         "name": "crown",
-        "indices": range(436, 447),
+        "indices": range(433, 444),
     },
     {
         "name": "neck",
