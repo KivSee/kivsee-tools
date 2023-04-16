@@ -15,7 +15,7 @@ from seqcreator.rendering.effects.rainbow import Rainbow
 from seqcreator.rendering.effects.saturation import Saturation
 from seqcreator.rendering.effects.snake import SnakeEffect
 from seqcreator.rendering.effects_factory import get_effects
-from seqcreator.rendering.functions.functions_store import const_function, half_function, linear_function, sin_function, sin_start_mid_down, sin_start_min, sin_start_max, sin_start_mid_up, steps_from_to, repeat_function
+from seqcreator.rendering.functions.functions_store import const_function, half_function, linear_function, sin_function, sin_start_mid_down, sin_start_min, sin_start_max, sin_start_mid_up, steps_from_to, repeat_function, steps_function
 
 from seqcreator.segment_utils import as_symmetric
 
@@ -302,6 +302,10 @@ class Req(Song):
         self.elements.set([("peacock1", "all")])
         get_effects().add_effect(colorful_mild())
 
+        self.in_beats(0, 8)
+        self.elements.set([("peacock1", "all")])
+        get_effects().add_effect(BrightnessEffect(linear_function(0.0, 1.0)))
+
         # make mild hue shift on every note at 2 first episodes
         # everything is good
         self.in_episodes(0, 2)
@@ -313,7 +317,7 @@ class Req(Song):
 
         self.in_episode(0)
         self.elements.set([("peacock1", "all")])
-        get_effects().add_effect(BrightnessEffect(const_function(0.5)))
+        get_effects().add_effect(BrightnessEffect(const_function(0.25)))
 
         self.in_episode(1)
         self.elements.set([("peacock1", "all_a1")])
@@ -321,6 +325,10 @@ class Req(Song):
 
         self.in_episodes(2, 4)
         self.happy_mild()
+
+        self.in_episode(2)
+        self.elements.set([("peacock1", "all")])
+        get_effects().add_effect(BrightnessEffect(const_function(0.5)))
 
         self.in_episode(3)
         self.elements.set([("peacock1", "all_a1")])
@@ -448,19 +456,45 @@ class Req(Song):
         cycle_total_beats = drama_buildup["cycleTotalBeats"]
 
         # fast snake on the body on the drama buildup part
+        self.in_episode(12)
         self.with_cycle(cycle_total_beats, 5.5, 8)
-        self.elements.set([wingl, wingr])
-        get_effects().add_effect(SnakeEffect(linear_function(0, 20), const_function(0.50), True))
+        self.elements.set([wingr])
+        get_effects().add_effect(SnakeEffect(linear_function(0, 15), const_function(0.50), True))
+        self.elements.set([wingl])
+        get_effects().add_effect(SnakeEffect(linear_function(15, 0), const_function(0.50), True))
 
-        # cover head with something different on drama buildup part
+        self.in_episode(13)
         self.with_cycle(cycle_total_beats, 5.5, 8)
+        self.elements.set([wingr_a1, wingl_a1])
+        get_effects().add_effect(BrightnessEffect(repeat_function(10, half_function(const_function(0.5), const_function(1.0)))))
+        self.elements.set([wingr_a2, wingl_a2])
+        get_effects().add_effect(BrightnessEffect(repeat_function(10, half_function(const_function(1.0), const_function(0.5)))))
+
+        self.in_episodes(12, 14)
+        self.with_cycle(cycle_total_beats, 5.5, 8)
+        self.elements.set([body, tail])
+        get_effects().add_effect(BrightnessEffect(repeat_function(10, half_function(const_function(0.5), const_function(1)))))
+
+        self.in_episodes(12, 14)
+        # cover head with something different on drama buildup part
         self.elements.set([head])
-        get_effects().add_effect(color_red(0.5))
-        self.elements.set([head])
+        self.with_cycle(cycle_total_beats, 5.5, 5.75)
         get_effects().add_effect(Rainbow(const_function(0.0), const_function(4.0)))
-        get_effects().add_effect(HueShift(steps_from_to(10, 0, 1, True)))
+        self.elements.set([head_a1])
+        self.with_cycle(cycle_total_beats, 6.0, 6.25)
+        get_effects().add_effect(Rainbow(const_function(0.3), const_function(4.0)))
+        self.elements.set([head])
+        self.with_cycle(cycle_total_beats, 6.5, 6.75)
+        get_effects().add_effect(Rainbow(const_function(0.0), const_function(4.0)))
+        self.elements.set([head_a1])
+        self.with_cycle(cycle_total_beats, 7.0, 7.25)
+        get_effects().add_effect(Rainbow(const_function(0.5), const_function(4.0)))
+        self.elements.set([head])
+        self.with_cycle(cycle_total_beats, 7.5, 7.75)
+        get_effects().add_effect(Rainbow(const_function(0.0), const_function(4.0)))
 
         # drums every 8 beats as white explosion
+        self.in_episodes(12, 14)
         self.with_cycle(8, 0, 1)
         self.elements.set([("peacock1", "all")])
         get_effects().add_effect(Saturation(linear_function(0.0, 1.0)))
