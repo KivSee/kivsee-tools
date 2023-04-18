@@ -36,8 +36,10 @@ body_a2 = ("peacock1", "body_a2")
 body_s = ("peacock1", "body_s")
 head = ("peacock1", "head")
 head_d = ("peacock1", "head_d")
+head_s = ("peacock1", "head_s")
 tail = ("peacock1", "tail")
 tail_d = ("peacock1", "tail_d")
+tail_s = ("peacock1", "tail_s")
 wing_l_s = ("peacock1", "wing_l_s")
 wing_r_s = ("peacock1", "wing_r_s")
 crown = ("peacock1", "crown")
@@ -49,7 +51,7 @@ all_elements_a2 = [("peacock1", "all_a2")]
 all = [wingl, wingr, body, head, tail]
 no_head = [wingl, wingr, body, tail]
 no_crown = [wingl, wingr, body, tail, neck]
-all_s = [wing_l_s, wing_r_s, body, head, tail]
+all_s = [wing_l_s, wing_r_s, body_s, head_s, tail_s]
 all_elements_single_sym = [("peacock1", "wing_l_s"), ("peacock1", "wing_r_s"), ("peacock1", "body_s"), ("peacock1", "tail_s"), ("peacock1", "head_s")]
 all_d = [wingl_d, wingr_d, body_d, head_d, tail_d]
 
@@ -147,7 +149,7 @@ class Sandstorm(Song):
         self.elements.set([("peacock1","all_r")])
         get_effects().add_effect(Saturation(linear_function(0.7, 1.0)))
         get_effects().add_effect(BrightnessEffect(linear_function(0.4, 0.9)))
-        get_effects().add_effect(SnakeEffect(repeat_function(1, steps_from_to(32, 0, 1)), linear_function(0.05, 1.0), True))
+        get_effects().add_effect(SnakeEffect(repeat_function(1, steps_from_to(48, 0, 2)), linear_function(0.5, 1.0), True))
         self.in_episodes(12, 14)
         self.elements.set([("peacock1","head")])
         rainbow(self.elements, {})
@@ -161,20 +163,6 @@ class Sandstorm(Song):
         self.with_cycle(2, 1.5, 1.75)
         self.elements.set(all_elements_a1)
         get_effects().add_effect(BrightnessEffect((sin_function(0.0, 0.4, 0, 1))))
-        # self.in_episodes(13, 14)
-        # self.elements.set([("peacock1","all_r")])
-        # rainbow(self.elements, {})
-        # #self.elements.set([("peacock1","all_r")])
-        # get_effects().add_effect(BrightnessEffect(const_function(0.8)))
-        # self.with_cycle(2, 0, 0.25)
-        # self.elements.set(all_elements_a1)
-        # get_effects().add_effect(BrightnessEffect(sin_function(0.0, 0.4, 0, 1)))
-        # self.with_cycle(2, 0.75, 1.0)
-        # self.elements.set(all_elements_a2)
-        # get_effects().add_effect(BrightnessEffect((sin_function(0.0, 0.4, 0, 1))))
-        # self.with_cycle(2, 1.5, 1.75)
-        # self.elements.set(all_elements_a1)
-        # get_effects().add_effect(BrightnessEffect((sin_function(0.0, 0.4, 0, 1))))
 
     def sandstorm_alternate_blink2(self, repeat_times): #TODO
         self.with_cycle(1, 0.0, 0.325)
@@ -187,10 +175,10 @@ class Sandstorm(Song):
     def sandstorm_alternate_blink(self, repeat_times):
         self.with_cycle(1, 0.0, 0.125)
         self.elements.set(all_elements_a1)
-        get_effects().add_effect(BrightnessEffect(const_function(0.3)))
+        get_effects().add_effect(BrightnessEffect(const_function(0.2)))
         self.with_cycle(4, 3.5, 3.75)
         self.elements.set(all_elements_a2)
-        get_effects().add_effect(BrightnessEffect(const_function(0.3)))
+        get_effects().add_effect(BrightnessEffect(const_function(0.2)))
     
     def sandstorm_alternate_blink3(self, repeat_times):
         self.with_cycle(1, 0.0, 0.125)
@@ -210,12 +198,17 @@ class Sandstorm(Song):
 
     def sandstorm_blink(self, repeat_times):
         self.with_cycle(1, 0.0, 0.125)
-        get_effects().add_effect(BrightnessEffect(const_function(0.5)))
+        get_effects().add_effect(BrightnessEffect(const_function(blink_min_val)))
         self.with_cycle(4, 3.5, 3.75)
-        get_effects().add_effect(BrightnessEffect(const_function(0.5)))
+        get_effects().add_effect(BrightnessEffect(const_function(blink_min_val)))
         self.with_cycle(16, 12, 16) #TODO
         get_effects().add_effect(BrightnessEffect(repeat_function(4, half_function(const_function(blink_min_val), const_function(0.9)))))
 
+    def sandstorm_blink2(self, repeat_times): #TODO
+        self.with_cycle(1, 0.0, 0.25)
+        get_effects().add_effect(BrightnessEffect(const_function(blink_min_val+0.1)))
+        #self.with_cycle(2, 1.25, 1.5)
+        #get_effects().add_effect(BrightnessEffect(const_function(blink_min_val+0.1)))
 
     def sandstorm_peak(self, ep):
         self.elements.set([("peacock1","all")])
@@ -274,19 +267,22 @@ class Sandstorm(Song):
         get_effects().add_effect(ConstColor(color.Color(0.333, 0.9, 1.0)))
         get_effects().add_effect(BrightnessEffect(repeat_function(32, half_function(const_function(blink_min_val), const_function(1.0)))))
 
+        #special snake tututu
         self.in_beats(284, 288)
         self.elements.set([("peacock1","all")])
         get_effects().add_effect(ConstColor(color.Color(0.66, 1.0, 1.0)))
-        get_effects().add_effect(HueShift(steps_from_to(16, 0, 0.65)))
-        snake_step(self.elements, {})
+        self.elements.set(all_s)
+        get_effects().add_effect(SnakeEffect(steps_from_to(16, 1, 0), const_function(16.0), False))
+        #get_effects().add_effect(HueShift(steps_from_to(16, 0, 0.65)))
+        #snake_step(self.elements, {})
           
         self.in_episodes(18, 21.5)
         rainbow(self.elements, {})
         self.with_cycle(2)
         self.elements.set([("peacock1", "wing_l"), ("peacock1", "wing_r")])
-        get_effects().add_effect(SnakeEffect(linear_function(0.0, 1.0), const_function(0.75), True))
+        get_effects().add_effect(SnakeEffect(linear_function(0.0, 2.0), const_function(0.75), True))
         self.elements.set([("peacock1", "body"),("peacock1", "tail"), ("peacock1", "head")])
-        get_effects().add_effect(BrightnessEffect(repeat_function(8, half_function(const_function(blink_min_val), const_function(0.5)))))
+        get_effects().add_effect(BrightnessEffect(repeat_function(4, half_function(const_function(blink_min_val), const_function(0.5)))))
 
         self.in_episodes(18, 21.5)
         self.with_cycle(8, 7, 8)
@@ -354,7 +350,7 @@ class Sandstorm(Song):
         rainbow(self.elements, {})
         self.with_cycle(2)
         self.elements.set([("peacock1", "wing_l"), ("peacock1", "wing_r")])
-        get_effects().add_effect(SnakeEffect(linear_function(0.0, 1.0), const_function(0.75), True))
+        get_effects().add_effect(SnakeEffect(linear_function(0.0, 2.0), const_function(0.75), True))
         self.elements.set([("peacock1", "body"),("peacock1", "tail"), ("peacock1", "head")])
         get_effects().add_effect(BrightnessEffect(repeat_function(8, half_function(const_function(blink_min_val), const_function(0.5)))))
 
@@ -426,6 +422,22 @@ class Sandstorm(Song):
         get_effects().add_effect(BrightnessEffect(const_function(0.2)))
         self.with_cycle(16, 12, 16) #TODO
         get_effects().add_effect(BrightnessEffect(repeat_function(4, half_function(const_function(blink_min_val), const_function(0.9)))))
+
+    def crown_single_blink(self, ending=False):
+        self.elements.set([("peacock1", "crown")])
+        self.with_cycle(8, 0.25, 8.0)
+        get_effects().add_effect(ConstColor(color.Color(0.0, 0.95, 0.0)))
+        self.with_cycle(8, 0.0, 0.25)
+        get_effects().add_effect(ConstColor(color.Color(0.0, 0.95, 1.0)))
+        if ending:
+            self.with_cycle(8, 7.75, 8.0)
+            get_effects().add_effect(ConstColor(color.Color(0.0, 0.95, 1.0)))
+
+    def ending_alternate_sin(self, repeat_times):
+        self.elements.set(all_elements_a1)
+        get_effects().add_effect(BrightnessEffect(repeat_function(repeat_times, sin_function(0.0, 0.3, 0, 1))))
+        self.elements.set(all_elements_a2)
+        get_effects().add_effect(BrightnessEffect(repeat_function(repeat_times, sin_function(0.0, 0.3, 0.25, 1))))
 
 #episdode 26 - 30.5
     def sandstorm_peak2(self, ep):
@@ -574,34 +586,40 @@ class Sandstorm(Song):
         #get_effects().add_effect(BrightnessEffect(sin_start_min(0.25, 0.6)))
         self.elements.set([("peacock1","all_d")])
         get_effects().add_effect(ConstColor(color.Color(hue-0.25, 1.0, 0.9)))
-        #get_effects().add_effect(HueShift(const_function(0.2)))
-        #get_effects().add_effect(BrightnessEffect(sin_start_max(0.25, 0.6)))
         self.sandstorm_alternate_blink(1)
-        self.with_cycle(16, 12, 16)
-        self.elements.set([("peacock1","all_d")])
-        #get_effects().add_effect(ConstColor(color.Color(hue -0.25, 1.0, 1.0)))
-        #get_effects().add_effect(HueShift(const_function(0.0)))
-        get_effects().add_effect(SnakeEffect(repeat_function(1, linear_function(1, 0)), const_function(0.6), True))
-            # vocals added
         self.in_episodes(start_ep+2, start_ep+4)
         self.elements.set([("peacock1", "all")])
         get_effects().add_effect(ConstColor(color.Color(hue, 1.0, 1.0)))
-        get_effects().add_effect(HueShift(steps_from_to(num_steps=4, start=0, end=0.8)))
-        self.sandstorm_alternate_blink2(1)
+        get_effects().add_effect(HueShift(steps_from_to(num_steps=4, start=0, end=1.0)))
+        self.sandstorm_blink2(1)
+        #self.elements.set([("peacock1", "crown")])
+        #get_effects().add_effect(ConstColor(color.Color(0.333, 0.95, 0.0)))
+        self.crown_single_blink()
 
     def sandstorm_minimalist(self, start_ep):
-        self.in_episodes(start_ep, start_ep + 2)
+        self.in_episodes(start_ep, start_ep + 0.5)
         self.elements.set([("peacock1", "all")])
         uniform(self.elements, {})
-        get_effects().add_effect(HueShift(steps_from_to(num_steps=4, start=0, end=0.8)))
-        alternate_sin(self.elements, 16)
-        # self.elements.set([("peacock1", "all")])
-        # uniform(self.elements, {})
-        # get_effects().add_effect(BrightnessEffect(steps_function(8, 1.0, 0.6)))
-        # get_effects().add_effect(HueShift(steps_function(8, 0.1, 0.0)))
-        # self.with_cycle(2)
-        # #uniform(self.elements, {})
-        # get_effects().add_effect(SnakeEffect(repeat_function(2, linear_function(1, 0)), const_function(0.25), True))
+        get_effects().add_effect(HueShift(steps_from_to(num_steps=1, start=0, end=0.8)))
+        self.ending_alternate_sin(4)
+        self.crown_single_blink()
+        self.in_episodes(start_ep+0.5, start_ep + 1)
+        self.elements.set([tail, neck, wing_l, wing_r])
+        uniform(self.elements, {})
+        get_effects().add_effect(HueShift(steps_from_to(num_steps=1, start=0, end=0.8)))
+        self.ending_alternate_sin(4)
+        self.crown_single_blink()
+        self.in_episodes(start_ep+1, start_ep + 1.5)
+        self.elements.set([neck, wing_l, wing_r])
+        uniform(self.elements, {})
+        get_effects().add_effect(HueShift(steps_from_to(num_steps=1, start=0, end=0.8)))
+        self.ending_alternate_sin(4)
+        self.crown_single_blink()
+        self.in_episodes(start_ep + 1.5, start_ep + 2.0)
+        self.elements.set([("peacock1", "neck")])
+        uniform(self.elements, {})
+        self.ending_alternate_sin(4)
+        self.crown_single_blink(True)
 
     def sandstorm_basic_beat2(self, start_b=0.0):
         self.in_beats(354, 368)
