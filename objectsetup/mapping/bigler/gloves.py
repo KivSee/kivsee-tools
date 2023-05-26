@@ -1,8 +1,11 @@
+from objectsetup.mapping.utils import linear_pos_pixels
+
+
 val = {
         "numberOfPixels": 50,
         "segments": [{
             "name": "all",
-            "pixels": [dict({"index": n}) for n in range(0, 50)]
+            "pixels": linear_pos_pixels(range(0, 50))
         }
         ]
     }

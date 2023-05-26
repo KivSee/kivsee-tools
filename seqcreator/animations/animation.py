@@ -1,4 +1,5 @@
 from abc import abstractmethod, ABC
+import json
 from seqcreator.rendering.effects_factory import get_effects
 from seqcreator.infra import network_manager
 from seqcreator.infra.logger import kivsee_logger as logger
@@ -32,6 +33,7 @@ class Animation(ABC):
             "duration_ms": self.duration,
             "num_repeats": self.repeats
         } for (thing_name, effects) in thing_to_effects.items()}
+        print(json.dumps(per_thing_config, indent=2))
         network_manager.store_sequence_all(self.trigger_name, per_thing_config)
 
     @abstractmethod
