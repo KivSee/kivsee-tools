@@ -19,7 +19,7 @@ class Warm(SoundlessAnimation):
 
         self.elements.set(self.elements.all())
         timing.beats(0, 64)
-        coloring.hue_range(0.025, 0.035, 1)
+        coloring.hue_range(0.035, 0.035, 1)
         logger.info(f"Adjusting brightness level to {config.brightness_level}")
         masking.brightness(config.brightness_level)
         
