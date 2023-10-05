@@ -4,6 +4,9 @@ from seqcreator.users.common.songs.sandstorm import Sandstorm
 from seqcreator.users.common.songs.overthinker import OverThinker
 from seqcreator.users.common.songs.peacock import Peacock
 from seqcreator.users.common.songs.req import Req
+from seqcreator.users.common.songs.speech_advertisement import SpeechAdvertisement
+from seqcreator.users.common.songs.speech_motivational import SpeechMotivational
+from seqcreator.users.common.songs.speech_rfid import SpeechRfid
 from seqcreator.users.common.songs.under import Under
 from seqcreator.users.common.soundless_animations.romantic import Romantic
 from seqcreator.users.common.soundless_animations.even import Even
@@ -25,7 +28,10 @@ triggersToClasses = {
     "purim": Purim,
     "req": Req,
     "over": OverThinker,
-    "sandstorm": Sandstorm
+    "sandstorm": Sandstorm,
+    "speech_motivational": SpeechMotivational,
+    "speech_advertisement": SpeechAdvertisement,
+    "speech_rfid": SpeechRfid,
 }
 
 class User(ABC):

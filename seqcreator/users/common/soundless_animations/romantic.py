@@ -15,7 +15,7 @@ class Romantic(SoundlessAnimation):
         self.elements = element_provider.get_element_provider()
 
     def render_effects(self):
-        timing.song_settings(bpm=128, beats_per_episode=32, start_offset=0)
+        timing.song_settings(bpm=32, beats_per_episode=32, start_offset=0)
 
         self.elements.set_all()
         timing.beats(0, 64)
